@@ -1,0 +1,7 @@
+﻿Manifest format:
+
+file_name>type
+...
+
+so like 
+textures\butt.png>Lucid.Framework.Graphics.Texture

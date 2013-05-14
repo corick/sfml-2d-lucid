@@ -1,0 +1,4 @@
+﻿LucidPack -- Creates data.zip archive from a directory structure.
+
+Populates the ext -> Type map thing somehow
+Creates a manifest from dir structere, then packs!

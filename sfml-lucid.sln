@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucid", "sfml-lucid\Lucid.csproj", "{90CA7B1D-3600-4C49-B699-DA2428872CF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGame", "test-game\TestGame.csproj", "{3761C67C-D222-4DF8-845C-096CFE159F1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{295813F3-8787-4B48-B3B7-1E1590DE8CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lucidpack", "lucidpack\lucidpack.csproj", "{08E9AB89-20C5-4370-95D5-CA21B3369C97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90CA7B1D-3600-4C49-B699-DA2428872CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CA7B1D-3600-4C49-B699-DA2428872CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CA7B1D-3600-4C49-B699-DA2428872CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CA7B1D-3600-4C49-B699-DA2428872CF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3761C67C-D222-4DF8-845C-096CFE159F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3761C67C-D222-4DF8-845C-096CFE159F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3761C67C-D222-4DF8-845C-096CFE159F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3761C67C-D222-4DF8-845C-096CFE159F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295813F3-8787-4B48-B3B7-1E1590DE8CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295813F3-8787-4B48-B3B7-1E1590DE8CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295813F3-8787-4B48-B3B7-1E1590DE8CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295813F3-8787-4B48-B3B7-1E1590DE8CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E9AB89-20C5-4370-95D5-CA21B3369C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E9AB89-20C5-4370-95D5-CA21B3369C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E9AB89-20C5-4370-95D5-CA21B3369C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E9AB89-20C5-4370-95D5-CA21B3369C97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
