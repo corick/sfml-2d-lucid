@@ -19,7 +19,7 @@ namespace TestGame
             tex = this.resources.Load<Texture>(@"texture/test_image.png");
 
             Sprite sp = new Sprite(tex, new Position());
-            sp.Position.Position = new Vector(30, 30);
+            sp.Position.Position = new Vector(300, 300);
             displayList.Add(sp);
         }
 

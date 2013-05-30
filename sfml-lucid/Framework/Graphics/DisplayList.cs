@@ -35,6 +35,7 @@ namespace Lucid.Framework.Graphics
             displayObjects.Add(o);
             displayObjects.Sort();
             o.DepthChanged += OnDepthChange;
+            o.Initialize();
         }
 
         public void Remove(IDisplayObject o)

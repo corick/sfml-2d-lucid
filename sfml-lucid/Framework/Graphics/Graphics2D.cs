@@ -48,7 +48,7 @@ namespace Lucid.Framework.Graphics
 
             if (destRect.IntersectsWith(Viewport)) //If we're on the screen.
             {
-                device.DrawTexture(texture, destRect, sourceRect, color);
+                device.DrawTexture(texture, sourceRect, destRect, color);
             } 
         }
 

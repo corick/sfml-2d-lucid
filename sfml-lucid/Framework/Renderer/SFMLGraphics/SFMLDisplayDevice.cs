@@ -48,6 +48,7 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             sprite.TextureRect = new IntRect(sourceRect.Left, sourceRect.Top, sourceRect.Width, sourceRect.Height);
             sprite.Scale = new SFML.Window.Vector2f(1f, 1f); //FIXME: This doesn't work with destrect scaling! 
             sprite.Color = SFML.Graphics.Color.White;
+            sprite.Position = new SFML.Window.Vector2f(destRect.X, destRect.Y);
 
             window.Draw(sprite);
         }
