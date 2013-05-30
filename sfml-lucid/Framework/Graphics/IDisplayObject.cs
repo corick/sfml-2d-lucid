@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Lucid.Framework.Renderer;
+
 namespace Lucid.Framework.Graphics
 {
     /// <summary>
@@ -43,9 +45,9 @@ namespace Lucid.Framework.Graphics
         void Initialize();
 
         /// <summary>
-        /// Draws this display object to a display.
+        /// Draws this display object to a Graphics2D reference.
         /// </summary>
-        /// <param name="display">The display to draw it to.</param>
-        void Draw(IDisplayProvider display); 
+        /// <param name="display">The g2d to draw it to.</param>
+        void Draw(Graphics2D display); 
     }
 }

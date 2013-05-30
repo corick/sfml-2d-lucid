@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Drawing;
 
-namespace Lucid.Framework
+namespace Lucid.Framework.Renderer
 {
     /// <summary>
     /// Represents a window, etc. 
@@ -47,7 +47,7 @@ namespace Lucid.Framework
         /// The display provider for this window. Manages texture loading and draw calls.
         /// Needs to be initialized first.
         /// </summary>
-        IDisplayProvider DisplayProvider
+        IDisplayDevice DisplayProvider
         {
             get;
         }

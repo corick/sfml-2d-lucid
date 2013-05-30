@@ -26,7 +26,8 @@ namespace Lucid.Framework.Graphics
 
         public Texture(TextureInfo textureInfo, Object textureData)
         {
-
+            this.Info = textureInfo;
+            this.TextureData = textureData;
         }
     }
 }

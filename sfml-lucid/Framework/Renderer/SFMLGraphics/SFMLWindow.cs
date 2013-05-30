@@ -43,7 +43,7 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             }
         }
 
-        public IDisplayProvider DisplayProvider
+        public IDisplayDevice DisplayProvider
         {
             get;
             private set;
@@ -72,7 +72,7 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             window.Size = new Vector2u(800, 600); //FIXME: Get these from renderflags.
             window.SetFramerateLimit(30);
 
-            DisplayProvider = new SFMLDisplayProvider(this.window);
+            DisplayProvider = new SFMLDisplayDevice(this.window);
             window.Closed += OnClose;
         }
 

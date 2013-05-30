@@ -28,6 +28,11 @@ namespace Lucid.Framework
             _y = y;
         }
 
+        public static Vector Zero
+        {
+            get { return new Vector(0, 0); }
+        }
+
         //TODO: Dotprod, etc.
     }
 }

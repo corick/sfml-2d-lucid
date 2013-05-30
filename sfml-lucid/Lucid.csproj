@@ -53,21 +53,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\Config.cs" />
+    <Compile Include="Framework\Debug.cs" />
     <Compile Include="Framework\Game.cs" />
+    <Compile Include="Framework\Graphics\Camera.cs" />
+    <Compile Include="Framework\Graphics\Graphics2D.cs" />
     <Compile Include="Framework\Graphics\IDisplayObject.cs" />
+    <Compile Include="Framework\Graphics\PrimitiveType.cs" />
     <Compile Include="Framework\Graphics\Sprite.cs" />
     <Compile Include="Framework\Graphics\TextureInfo.cs" />
     <Compile Include="Framework\Input\InputManager.cs" />
     <Compile Include="Framework\Input\KeyFlags.cs" />
     <Compile Include="Framework\Input\KeyState.cs" />
-    <Compile Include="Framework\IWindow.cs" />
-    <Compile Include="Framework\Renderer\SFMLGraphics\SFMLDisplayProvider.cs" />
+    <Compile Include="Framework\IPositionComponent.cs" />
+    <Compile Include="Framework\Position.cs" />
+    <Compile Include="Framework\Renderer\IWindow.cs" />
+    <Compile Include="Framework\Renderer\SFMLGraphics\SFMLDisplayDevice.cs" />
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLTextureProvider.cs" />
     <Compile Include="Framework\FrameworkException.cs" />
     <Compile Include="Framework\Graphics\DisplayList.cs" />
-    <Compile Include="Framework\ITextureProvider.cs" />
+    <Compile Include="Framework\Resource\ITextureProvider.cs" />
     <Compile Include="Framework\Graphics\Texture.cs" />
-    <Compile Include="Framework\IDisplayProvider.cs" />
+    <Compile Include="Framework\Renderer\IDisplayDevice.cs" />
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLWindow.cs" />
     <Compile Include="Framework\Resource\IResourceReader.cs" />
     <Compile Include="Framework\Resource\PackManifest.cs" />
@@ -76,6 +82,7 @@
     <Compile Include="Framework\Resource\ResourceManager.cs" />
     <Compile Include="Framework\Resource\ZipPack.cs" />
     <Compile Include="Framework\Resource\Texture\TextureReader.cs" />
+    <Compile Include="Framework\Scene\SceneManager.cs" />
     <Compile Include="Framework\Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

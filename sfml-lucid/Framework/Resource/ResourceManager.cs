@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Lucid.Framework.Renderer;
+
 namespace Lucid.Framework.Resource
 {
     /// <summary>
@@ -20,7 +22,7 @@ namespace Lucid.Framework.Resource
         /// </summary>
         /// <param name="packPath"></param>
         /// <param name="disp"></param>
-        public ResourceManager(string packPath, IDisplayProvider disp)
+        public ResourceManager(string packPath, IDisplayDevice disp)
         {
             //Create our PackFile
             resources = new ZipPack(packPath);

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+
+using Lucid.Framework.Renderer;
 
 namespace Lucid.Framework.Graphics
 {
@@ -30,19 +30,64 @@ namespace Lucid.Framework.Graphics
             set { visible = value; }
         }
 
-        public void Initialize()
+        /// <summary>
+        /// The absolute (non-camera-xlated) position of this sprite.
+        /// </summary>
+        public IPositionComponent Position
         {
-            throw new NotImplementedException();
+            get;
+            private set;
         }
 
-        public void Draw(IDisplayProvider display)
+        /// <summary>
+        /// The camera that I'm parented to!
+        /// </summary>
+        public Camera Camera
         {
-            throw new NotImplementedException();
+            get;
+            set;
+        }
+
+        private Texture texture;
+
+        protected Size  size;
+        protected Point texOffset;
+
+        public Sprite(Texture texture, IPositionComponent position, int depth = 1)
+        {
+            Visible = true;
+            this.depth = depth;
+            this.texture = texture;
+
+            this.Position = position;
+
+            //Set the h/w for this. It'll be re-set in the ctor for sprite sheets.
+            size.Width = texture.Info.Width;
+            size.Height = texture.Info.Height;
+        }
+
+        public virtual void Initialize()
+        {
+            if (Position.RectSize.Width  != size.Width
+             || Position.RectSize.Height != size.Height)
+            {
+                //Set the size to the texture's size.
+                Size s = new Size(texture.Info.Width, texture.Info.Height);
+                Position.RectSize = s;
+            }
+        }
+
+        public void Draw(Graphics2D gfx)
+        {
+            //FIXME: Color, etc render property stuff.
+            gfx.DrawTexture(texture, Position.Position, Position.RectSize, new Rectangle(texOffset, size), Camera, Color.White);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //Don't dispose the texture here, I think. 
+            //We're still using it in other sprites.
+            Debug.Trace("Disposing this sprite!");
         }
     }
 }

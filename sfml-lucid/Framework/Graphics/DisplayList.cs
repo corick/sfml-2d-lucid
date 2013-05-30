@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Lucid.Framework.Renderer;
+
 namespace Lucid.Framework.Graphics
 {
     public class DisplayList
     {
-        private IDisplayProvider display;
+        private Graphics2D graphics;
         private List<IDisplayObject> displayObjects;
 
-        public DisplayList(IDisplayProvider display)
+        public DisplayList(Graphics2D graphics)
         {
-            this.display = display; //`dis play not `dat play.
+            this.graphics = graphics; //sad i removed a pun here
             displayObjects = new List<IDisplayObject>();
         }
 
@@ -24,7 +26,7 @@ namespace Lucid.Framework.Graphics
         {
             foreach (var d in displayObjects)
             {
-                d.Draw(display);
+                d.Draw(graphics);
             }
         }
 

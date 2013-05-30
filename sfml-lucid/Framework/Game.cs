@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Lucid.Framework.Graphics;
+using Lucid.Framework.Renderer;
 using Lucid.Framework.Resource;
 
 namespace Lucid.Framework
@@ -17,9 +18,10 @@ namespace Lucid.Framework
         private bool disposing;
 
         protected IWindow          window;
-        protected IDisplayProvider display;
+        //protected IDisplayDevice display;
         protected DisplayList      displayList;
         protected ResourceManager  resources;
+        protected Graphics2D graphics;
 
         /// <summary>
         /// Creates a new Game instance ...
@@ -35,7 +37,6 @@ namespace Lucid.Framework
         {
             disposing = false;
             this.window = window;
-            this.display = window.DisplayProvider;
         }
 
         public void Run()
@@ -60,11 +61,14 @@ namespace Lucid.Framework
         {
             //Create subsystems.
             window.Initialize();
-            display = window.DisplayProvider;
+            IDisplayDevice display = window.DisplayProvider;
             
             //Initialize resource manager
             resources = new ResourceManager("resources.lpz", display);
 
+            graphics = new Graphics2D(display);
+            displayList = new DisplayList(graphics);
+            
             Initialize();
         }
 
@@ -80,6 +84,7 @@ namespace Lucid.Framework
             //Draw each component!
             Draw();
             //Take display list and throw it at the window.
+            displayList.Draw();
         }
 
         private void MainLoop()

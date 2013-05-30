@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lucid.Framework
+using System.Drawing;
+
+using Lucid.Framework.Graphics;
+
+namespace Lucid.Framework.Renderer
 {
     /// <summary>
     /// A display provider:
     /// Manages ui ticks, 
     /// </summary>
-    public interface IDisplayProvider //TODO: Abstract class, so we can inherit the drawing logic!
+    public interface IDisplayDevice //TODO: Abstract class, so we can inherit the drawing logic!
     {
         /// <summary>
         /// Gets the texture provider associated with this Display Provider.
@@ -18,11 +22,16 @@ namespace Lucid.Framework
         /// <returns>The texture provider.</returns>
         ITextureProvider GetTextureProvider();
 
-        //DisplayList {get; set;}
+        /// <summary>
+        /// The size of the viewport this is attached to. 
+        /// Not necessarily the same as the window's size.
+        /// </summary>
+        Size ViewportSize
+        {
+            get;
+        }
 
-        //CreateCamera();
-
-        //DrawSprite (source, destination, camera, renderprops)
+        void DrawTexture(Texture texture, Rectangle destScreen, Rectangle source, Color color);
 
         //DrawPrimitives (type, vertices)
 
