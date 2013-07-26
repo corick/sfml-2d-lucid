@@ -1,28 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using Lucid.Framework.Renderer;
 
 namespace Lucid.Framework.Graphics
 {
-    public class DisplayList
+    public class GraphicsContainer
+        : IGraphicsContainer
     {
-        private Graphics2D graphics;
-        private List<IDisplayObject> displayObjects;
+        public event EventHandler DepthChanged;
 
-        public DisplayList(Graphics2D graphics)
+        private List<IDisplayObject> displayObjects;
+        private DisplayObjectComparer comparer;
+
+        private int depth;
+        /// <summary>
+        /// The depth of this. Irrelevant for the root container
+        /// </summary>
+        public int Depth
         {
-            this.graphics = graphics; //sad i removed a pun here
-            displayObjects = new List<IDisplayObject>();
+            get
+            {
+                return depth;
+            }
+            set
+            {
+                depth = value;
+                OnDepthChange(this, new EventArgs());
+            }
         }
+
+        public bool Visible
+        {
+            get;
+            set;
+        }
+
+        public GraphicsContainer(int depth = 1)
+        {
+            displayObjects = new List<IDisplayObject>();
+            this.depth = depth;
+            comparer = new DisplayObjectComparer();
+        }
+
+        public void Initialize() { } //Stub.
 
         /// <summary>
         /// Draws each to the screen.
         /// </summary>
-        public void Draw()
+        public void Draw(Graphics2D graphics)
         {
             foreach (var d in displayObjects)
             {
@@ -33,7 +58,7 @@ namespace Lucid.Framework.Graphics
         public void Add(IDisplayObject o)
         {
             displayObjects.Add(o);
-            displayObjects.Sort();
+            displayObjects.Sort(comparer);
             o.DepthChanged += OnDepthChange;
             o.Initialize();
         }
@@ -75,4 +100,6 @@ namespace Lucid.Framework.Graphics
             displayObjects.Sort();
         }
     }
+
+    //public class DisplayList : GraphicsContainer { } //For Service container.
 }

@@ -31,15 +31,21 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="sfmlnet-audio-2">
-      <HintPath>..\..\..\..\..\..\..\Devel\libs\sfml\lib\sfmlnet-audio-2.dll</HintPath>
+    <Reference Include="sfmlnet-audio-2, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Devel\dotnet\sfml\lib\sfmlnet-audio-2.dll</HintPath>
     </Reference>
-    <Reference Include="sfmlnet-graphics-2">
-      <HintPath>..\..\..\..\..\..\..\Devel\libs\sfml\lib\sfmlnet-graphics-2.dll</HintPath>
+    <Reference Include="sfmlnet-graphics-2, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Devel\dotnet\sfml\lib\sfmlnet-graphics-2.dll</HintPath>
     </Reference>
-    <Reference Include="sfmlnet-window-2">
-      <HintPath>..\..\..\..\..\..\..\Devel\libs\sfml\lib\sfmlnet-window-2.dll</HintPath>
+    <Reference Include="sfmlnet-window-2, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Devel\dotnet\sfml\lib\sfmlnet-window-2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,10 +60,19 @@
   <ItemGroup>
     <Compile Include="Framework\Config.cs" />
     <Compile Include="Framework\Debug.cs" />
+    <Compile Include="Framework\Entities\Components\Component.cs" />
+    <Compile Include="Framework\Entities\Components\ComponentList.cs" />
+    <Compile Include="Framework\Entities\Components\SpriteComponent.cs" />
+    <Compile Include="Framework\Entities\Components\SimpleMoveCopmonent.cs" />
+    <Compile Include="Framework\Entities\Components\SimpleSpriteComponent.cs" />
+    <Compile Include="Framework\Entities\Entity.cs" />
+    <Compile Include="Framework\Entities\EntityManager.cs" />
     <Compile Include="Framework\Game.cs" />
     <Compile Include="Framework\Graphics\Camera.cs" />
+    <Compile Include="Framework\Graphics\DisplayObjectComparer.cs" />
     <Compile Include="Framework\Graphics\Graphics2D.cs" />
     <Compile Include="Framework\Graphics\IDisplayObject.cs" />
+    <Compile Include="Framework\Graphics\IGraphicsContainer.cs" />
     <Compile Include="Framework\Graphics\PrimitiveType.cs" />
     <Compile Include="Framework\Graphics\Sprite.cs" />
     <Compile Include="Framework\Graphics\TextureInfo.cs" />
@@ -70,7 +85,7 @@
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLDisplayDevice.cs" />
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLTextureProvider.cs" />
     <Compile Include="Framework\FrameworkException.cs" />
-    <Compile Include="Framework\Graphics\DisplayList.cs" />
+    <Compile Include="Framework\Graphics\GraphicsContainer.cs" />
     <Compile Include="Framework\Resource\ITextureProvider.cs" />
     <Compile Include="Framework\Graphics\Texture.cs" />
     <Compile Include="Framework\Renderer\IDisplayDevice.cs" />
@@ -82,7 +97,11 @@
     <Compile Include="Framework\Resource\ResourceManager.cs" />
     <Compile Include="Framework\Resource\ZipPack.cs" />
     <Compile Include="Framework\Resource\Texture\TextureReader.cs" />
-    <Compile Include="Framework\Scene\SceneManager.cs" />
+    <Compile Include="Framework\Scene\ScreenManager.cs" />
+    <Compile Include="Framework\Scene\Screen.cs" />
+    <Compile Include="Framework\Services.cs" />
+    <Compile Include="Framework\UpdateNotifier.cs" />
+    <Compile Include="Framework\UpdateEventArgs.cs" />
     <Compile Include="Framework\Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +124,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Framework\Entities\MessageListeners\" />
     <Folder Include="Framework\Resource\Sound\" />
     <Folder Include="Framework\Sound\" />
   </ItemGroup>

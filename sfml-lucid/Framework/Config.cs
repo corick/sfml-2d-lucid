@@ -1,24 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lucid.Framework
 {
     /// <summary>
     /// Stub for now. Configuration file reader, exposes .cfg file as a 
     /// </summary>
-    internal class Config
+    public static class Config
     {
-        public Config()
-            : this(@"lucid-framework.cfg")
+        private static bool isInitialized = false;
+
+        public static string Read(string key)
         {
+            if (!isInitialized) throw new InvalidOperationException("Error: Can not read the config before it is initialized. Has Game.Run() been called yet?");
+            if (!HasKey(key)) throw new ArgumentException("Error: Key is not in the configuration.", key);
+            throw new NotImplementedException("ERROR: Can not read from configuration file. Not implemented.");
         }
 
-        public Config(String path)
+        private static bool HasKey(string key)
         {
-            System.Diagnostics.Debug.WriteLine("Hey this isn't implemented yet.");
+            return false;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Lucid.Framework.Resource
 {
@@ -25,6 +24,7 @@ namespace Lucid.Framework.Resource
             {
                 //Read each name>type line.
                 string line = r.ReadLine();
+                if (line[0] == '#') continue; //Skip comment lines.
                 string[] p = line.Split('>');
                 types.Add(p[0], Type.GetType(p[1], true, true));
             }

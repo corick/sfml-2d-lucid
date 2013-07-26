@@ -1,8 +1,5 @@
-﻿using System;
+﻿using SFML.Graphics;
 using System.Drawing;
-
-using SFML.Graphics;
-
 using LucidTexture = Lucid.Framework.Graphics.Texture;
 using SDColor = System.Drawing.Color;
 

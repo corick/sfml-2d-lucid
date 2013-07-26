@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Lucid.Framework.Graphics;
 using Lucid.Framework.Renderer;
 using Lucid.Framework.Resource;
+using Lucid.Framework.Scene;
+
+using System.Reflection; //For debug message. Remove me :)
 
 namespace Lucid.Framework
 {
@@ -17,11 +16,20 @@ namespace Lucid.Framework
     {
         private bool disposing;
 
+        //TODO: Put some of this into a service container thing.
+        //TODO: Find out which ones of these belong as services.
         protected IWindow          window;
-        //protected IDisplayDevice display;
-        protected DisplayList      displayList;
-        protected ResourceManager  resources;
-        protected Graphics2D graphics;
+        protected GraphicsContainer      displayList;
+        protected Graphics2D       graphics;
+        protected ScreenManager screenManager;
+
+        protected UpdateNotifier updateNotifier;
+
+        public Services Services
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Creates a new Game instance ...
@@ -37,6 +45,9 @@ namespace Lucid.Framework
         {
             disposing = false;
             this.window = window;
+            Debug.Trace("Assembly: {0}.", Assembly.GetExecutingAssembly().ToString());
+            Debug.Trace("Creating Game.");
+            Services = new Services();
         }
 
         public void Run()
@@ -47,15 +58,12 @@ namespace Lucid.Framework
 
             //Cleanup.
             window.Dispose();
+            Debug.Trace("Resources (probably) successfully disposed.\nByeeeee!");
         }
 
 
 
         protected virtual void Initialize() { }
-
-        protected virtual void Update(float dt) { }
-
-        protected virtual void Draw() { }
 
         private void InternalInitialize()
         {
@@ -63,28 +71,42 @@ namespace Lucid.Framework
             window.Initialize();
             IDisplayDevice display = window.DisplayProvider;
             
-            //Initialize resource manager
-            resources = new ResourceManager("resources.lpz", display);
+            //Initialize resource manager TODO: Read config for path.
+            Debug.Trace("Loading lpz packfile from resources.lpz.");
+            var resources = new ResourceManager("resources.lpz", display);
+            Services.Register<ResourceManager>(resources);
 
+            Debug.Trace("Initializing services.");
             graphics = new Graphics2D(display);
-            displayList = new DisplayList(graphics);
-            
+            displayList = new GraphicsContainer();
+            Services.Register<GraphicsContainer>(displayList); //Register the display list root.
+
+            //Update notifier too!
+            updateNotifier = new UpdateNotifier();
+            Services.Register<UpdateNotifier>(updateNotifier);
+
+            screenManager = new ScreenManager(this);
+            Services.Register<ScreenManager>(screenManager);
+
+            //Let's set up the screen now.
+            screenManager.SwitchScreen(new Screen());
+            screenManager.EndFrame(); //Manually call this here. HACK.
+
             Initialize();
         }
 
         private void InternalUpdate(float dt)
         {
-            //Update each component.
-            Update(dt);
+            //Fire the update notifier. 
+            updateNotifier.FrameUpdate();
         }
 
         private void InternalDraw()
         {
             //Do pre-drawing and post-drawing stuff!
             //Draw each component!
-            Draw();
             //Take display list and throw it at the window.
-            displayList.Draw();
+            displayList.Draw(graphics);
         }
 
         private void MainLoop()
@@ -100,6 +122,7 @@ namespace Lucid.Framework
                 InternalDraw();
 
                 window.Show();
+                screenManager.EndFrame();
             }
         }
 

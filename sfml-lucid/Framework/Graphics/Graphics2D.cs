@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Lucid.Framework.Renderer;
+using System;
 using System.Drawing;
-
-using Lucid.Framework.Renderer;
 
 namespace Lucid.Framework.Graphics
 {

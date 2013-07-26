@@ -1,10 +1,6 @@
-﻿using System;
+﻿using Lucid.Framework.Renderer;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Lucid.Framework.Renderer;
 
 namespace Lucid.Framework.Resource
 {
@@ -44,6 +40,17 @@ namespace Lucid.Framework.Resource
             //TODO: Resource caching -- Store resources in a <string, WeakReference> dictionary, and try to pull from there first.
             IResourceReader l = readers[typeof(T)];
             return l.LoadResource<T>(resources, path);
+        }
+
+        /// <summary>
+        /// Decrements the reference count for the resource.
+        /// TODO. This doesn't do anything yet. 
+        /// Used for knowing when resources are safe to release from the resource cache.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="res"></param>
+        public void DecrementCount<T>(T res)
+        {
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Lucid.Framework.Graphics;
 using System.IO;
-
-using Lucid.Framework.Graphics;
 
 namespace Lucid.Framework
 {

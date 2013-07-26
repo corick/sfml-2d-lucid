@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 
-using Lucid.Framework.Renderer;
 
 namespace Lucid.Framework.Graphics
 {
-    public class Sprite
+    public class Sprite //TODO: Add animation stuff.
         : IDisplayObject
     {
         public event EventHandler DepthChanged;

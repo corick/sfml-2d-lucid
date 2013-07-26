@@ -1,10 +1,8 @@
-﻿using System;
+﻿using SFML.Graphics;
+using SFML.Window;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-
-using SFML;
-using SFML.Graphics;
-using SFML.Window;
 
 namespace Lucid.Framework.Renderer.SFMLGraphics
 {
@@ -71,6 +69,13 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
 
             window.Size = new Vector2u(800, 600); //FIXME: Get these from renderflags.
             window.SetFramerateLimit(30);
+
+            //Now create a new view for this.
+            //FIXME: Pull this, and the window size thing out from here to a SetWindowSize(w,h) function.
+            //So we can change window size.
+            //Set this up so pixels are 1:1 to internal coords.
+            View pcView = new View(new FloatRect(0, 0, 800, 600));
+            window.SetView(pcView);
 
             DisplayProvider = new SFMLDisplayDevice(this.window);
             window.Closed += OnClose;

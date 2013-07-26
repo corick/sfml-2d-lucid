@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Lucid.Framework.Graphics;
 using System.IO;
-
-using Lucid.Framework.Graphics;
-
+using LucidTexture = Lucid.Framework.Graphics.Texture;
 //SFML.Graphics.Texture is also a thing, so we should import both separately
 //so I don't horribly confuse myself.
-using SFMLTexture  = SFML.Graphics.Texture;
-using LucidTexture = Lucid.Framework.Graphics.Texture;
+using SFMLTexture = SFML.Graphics.Texture;
 
 namespace Lucid.Framework.Renderer.SFMLGraphics
 {
