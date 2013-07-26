@@ -1,30 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using Lucid.Framework;
 using Lucid.Framework.Graphics;
+using Lucid.Framework.Resource;
 
 namespace TestGame
 {
     internal class TGame
         : Lucid.Framework.Game
     {
-        private Texture tex;
-
         protected override void Initialize()
         {
-            tex = this.resources.Load<Texture>(@"texture/test_image.png");
-
-            Sprite sp = new Sprite(tex, new Position());
-            sp.Position.Position = new Vector(300, 300);
-            displayList.Add(sp);
+            //This is a lil verbose but our api is definitely changing.
+            Entities.TestEntity e = new Entities.TestEntity(screenManager.CurrentScreen.Entities);
+            screenManager.CurrentScreen.Entities.Add(e);
         }
 
-        protected override void Draw()
-        {
-        }
     }
 }
