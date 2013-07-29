@@ -7,7 +7,7 @@ namespace Lucid.Framework.Graphics
     /// A display object.
     /// </summary>
     public interface IDisplayObject
-        : IDisposable
+        //: IDisposable //Not necessary to dispose, since we do reference counting stuff instead.
     {
         /// <summary>
         /// Fire this when the depth changes to notify containers that it's changed.

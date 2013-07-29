@@ -34,7 +34,7 @@ namespace Lucid.Framework.Entities.Components
 
         public override void UnloadResources(Resource.ResourceManager rsc)
         {
-            sprite.Dispose();
+            rsc.Release<Texture>(resPath);
         }
 
         public override void Dispose()

@@ -51,7 +51,7 @@ namespace Lucid.Framework.Graphics
         protected Size  size;
         protected Point texOffset;
 
-        public Sprite(Texture texture, IPositionComponent position, int depth = 1)
+        public Sprite(Texture texture, IPositionComponent position, int depth = 1) //FIXME: Don't pass the texture in manually
         {
             Visible = true;
             this.depth = depth;
@@ -63,6 +63,9 @@ namespace Lucid.Framework.Graphics
             size.Width = texture.Info.Width;
             size.Height = texture.Info.Height;
         }
+
+        //TODO: Sprite(SpriteSheet, ipc, depth) 
+        //TODO: Animation, and keyed sprite sheet stuff.
 
         public virtual void Initialize()
         {
@@ -79,13 +82,6 @@ namespace Lucid.Framework.Graphics
         {
             //FIXME: Color, etc render property stuff.
             gfx.DrawTexture(texture, Position.Position, Position.RectSize, new Rectangle(texOffset, size), Camera, Color.White);
-        }
-
-        public void Dispose()
-        {
-            //Don't dispose the texture here, I think. 
-            //We're still using it in other sprites.
-            Debug.Trace("Disposing this sprite!");
         }
     }
 }

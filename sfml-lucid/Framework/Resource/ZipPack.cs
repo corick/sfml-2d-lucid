@@ -19,7 +19,6 @@ namespace Lucid.Framework.Resource //TODO: Separate this into another dll.
             using (var m = packFile.GetEntry("lucid-manifest").Open())
             {
                 manifest.ReadManifest(m);
-                m.Close();
             }
         }
 

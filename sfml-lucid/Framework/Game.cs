@@ -13,17 +13,18 @@ namespace Lucid.Framework
     /// The main game class for ... TODO DOC
     /// </summary>
     public class Game
+        : IDisposable
     {
         private bool disposing;
 
         //TODO: Put some of this into a service container thing.
         //TODO: Find out which ones of these belong as services.
-        protected IWindow          window;
-        protected GraphicsContainer      displayList;
-        protected Graphics2D       graphics;
-        protected ScreenManager screenManager;
-
-        protected UpdateNotifier updateNotifier;
+        protected IWindow           window;
+        protected GraphicsContainer displayList;
+        protected Graphics2D        graphics;
+        protected ScreenManager     screenManager;
+        protected UpdateNotifier    updateNotifier;
+        protected ResourceManager   resources;
 
         public Services Services
         {
@@ -57,11 +58,17 @@ namespace Lucid.Framework
             MainLoop();
 
             //Cleanup.
-            window.Dispose();
+            this.Dispose();
             Debug.Trace("Resources (probably) successfully disposed.\nByeeeee!");
         }
 
-
+        public void Dispose()
+        {
+            screenManager.CurrentScreen.Dispose();
+            resources.Dispose();
+            //Dispose graphics necessary?
+            window.Dispose();
+        }
 
         protected virtual void Initialize() { }
 
@@ -73,7 +80,7 @@ namespace Lucid.Framework
             
             //Initialize resource manager TODO: Read config for path.
             Debug.Trace("Loading lpz packfile from resources.lpz.");
-            var resources = new ResourceManager("resources.lpz", display);
+            resources = new ResourceManager("resources.lpz", display);
             Services.Register<ResourceManager>(resources);
 
             Debug.Trace("Initializing services.");

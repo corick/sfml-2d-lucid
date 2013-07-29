@@ -69,25 +69,23 @@ namespace Lucid.Framework.Graphics
             o.DepthChanged -= OnDepthChange;
         }
 
-        public void Clear(bool andDispose = false)
-        {
-            //Clear the list. Unregister depth change events too!
-            displayObjects.ForEach(
-                (o) => 
-                { 
-                    if (andDispose) 
-                            o.Dispose();
-                    o.DepthChanged -= OnDepthChange; 
-                }
-            );
+        //public void Clear() //FIXME: I don't think this should ever be added manually. That would probably make things bug out.
+        //{
+        //    //Clear the list. Unregister depth change events too!
+        //    displayObjects.ForEach(
+        //        (o) => 
+        //        { 
+        //            o.DepthChanged -= OnDepthChange; 
+        //        }
+        //    );
 
-            displayObjects.Clear();
-        }
+        //    displayObjects.Clear();
+        //}
 
-        public void Dispose()
-        {
-            Clear(true);
-        }
+        //public void Dispose()
+        //{
+        //    Clear();
+        //}
 
         /// <summary>
         /// A contained display object's depth has changed!
@@ -100,6 +98,4 @@ namespace Lucid.Framework.Graphics
             displayObjects.Sort();
         }
     }
-
-    //public class DisplayList : GraphicsContainer { } //For Service container.
 }

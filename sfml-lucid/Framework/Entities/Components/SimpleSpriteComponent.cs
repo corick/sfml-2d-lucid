@@ -12,6 +12,7 @@ namespace Lucid.Framework.Entities.Components
         : Component
     {
         protected Sprite sprite;
+        protected string path = @"texture/test_image.png";
 
         public SimpleSpriteComponent(Entity parent)
             : base(parent) { }
@@ -20,7 +21,7 @@ namespace Lucid.Framework.Entities.Components
 
         public override void LoadResources(Resource.ResourceManager rsc)
         {
-            Texture tex = rsc.Load<Texture>(@"texture/test_image.png");
+            Texture tex = rsc.Load<Texture>(path);
             sprite = new Sprite(tex, Parent);           
         }
 
@@ -31,7 +32,7 @@ namespace Lucid.Framework.Entities.Components
 
         public override void UnloadResources(Resource.ResourceManager rsc)
         {
-            sprite.Dispose();
+            rsc.Release<Texture>(path);
         }
     }
 }

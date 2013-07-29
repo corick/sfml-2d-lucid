@@ -63,7 +63,7 @@ namespace Lucid.Framework.Entities
             }
         }
 
-        private void UnloadResources(ResourceManager resources)
+        public void UnloadResources(ResourceManager resources)
         {
             //FIXME: This doesn't work right now because of the way rsc is passed.
             foreach (Component c in Components) c.UnloadResources(resources);

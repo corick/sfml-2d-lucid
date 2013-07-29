@@ -1,8 +1,9 @@
-﻿using Lucid.Framework.Graphics;
+﻿using System;
 using System.IO;
+
+using Lucid.Framework.Graphics;
+
 using LucidTexture = Lucid.Framework.Graphics.Texture;
-//SFML.Graphics.Texture is also a thing, so we should import both separately
-//so I don't horribly confuse myself.
 using SFMLTexture = SFML.Graphics.Texture;
 
 namespace Lucid.Framework.Renderer.SFMLGraphics
@@ -10,8 +11,11 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
     public class SFMLTextureProvider
         : ITextureProvider
     {
+        private Action<object> disposeCallback;
+
         public SFMLTextureProvider()
         {
+            disposeCallback = (object o) => { ((SFMLTexture)o).Dispose(); };
         }
      
         /// <summary>
@@ -46,7 +50,7 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
         {
             texture.Smooth = false; //FIXME: Get smoothing thing from config.
             TextureInfo tinfo = new TextureInfo((int)texture.Size.X, (int)texture.Size.Y);
-            LucidTexture ret = new LucidTexture(tinfo, texture);
+            LucidTexture ret = new LucidTexture(tinfo, texture, disposeCallback);
             return ret;
         }
 

@@ -60,14 +60,14 @@ namespace Lucid.Framework.Scene
             var displayList = Services.Get<GraphicsContainer>();
             displayList.Add(DipslayObjects);
             Resources = Services.Get<ResourceManager>();
-            Debug.Trace("Attached /this/ to the screen manager successfully.");
+            Debug.Trace("Attached {0} to the screen manager successfully.", this);
         }
 
         private bool disposed = false;
         public void Dispose()
         {
-            Entities.Dispose();
-            DipslayObjects.Dispose();
+            Entities.Dispose(); //This should be enough to clean each up.
+            //DipslayObjects.Dispose();
             //FIXME: Do this right.
             disposed = true;
         }

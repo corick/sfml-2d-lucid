@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Lucid.Framework.Graphics
 {
     internal interface IGraphicsContainer
-        : IDisposable, IDisplayObject
+        : IDisplayObject
     {
         void Add(IDisplayObject o);
         void Remove(IDisplayObject o);
-        void Clear(bool andDispose);
+        //void Clear(bool andDispose);
     }
 }

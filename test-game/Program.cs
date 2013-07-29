@@ -5,7 +5,7 @@ namespace TestGame
     {
         static void Main(string[] args)
         {
-            TGame game = new TGame();
+            TGame game = new TGame(); //FIXME: Implement Using.
             game.Run();
         }
     }

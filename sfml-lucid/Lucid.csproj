@@ -84,8 +84,9 @@
     <Compile Include="Framework\Renderer\IWindow.cs" />
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLDisplayDevice.cs" />
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLTextureProvider.cs" />
-    <Compile Include="Framework\FrameworkException.cs" />
     <Compile Include="Framework\Graphics\GraphicsContainer.cs" />
+    <Compile Include="Framework\Resource\AutoReference.cs" />
+    <Compile Include="Framework\Resource\IResource.cs" />
     <Compile Include="Framework\Resource\ITextureProvider.cs" />
     <Compile Include="Framework\Graphics\Texture.cs" />
     <Compile Include="Framework\Renderer\IDisplayDevice.cs" />

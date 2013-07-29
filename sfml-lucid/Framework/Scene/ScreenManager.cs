@@ -12,6 +12,9 @@ namespace Lucid.Framework.Scene
     /// </summary>
     public class ScreenManager
     {
+        /// <summary>
+        /// The services container associated with this game.
+        /// </summary>
         public Services Services
         {
             get;
@@ -36,6 +39,10 @@ namespace Lucid.Framework.Scene
             private set;
         }
 
+        /// <summary>
+        /// Creates a new screen manager assoc with this game.
+        /// </summary>
+        /// <param name="game">The game to create the screen manager for.</param>
         public ScreenManager(Game game)
         {
             Services = game.Services;
@@ -43,7 +50,7 @@ namespace Lucid.Framework.Scene
             if (Services == null)
             {
                 Debug.Trace("FATAL: Game is not initialized, so SceneManager can't grab the resources or display list.");
-                throw new Exception("Can't initialize the scene manager. Resource or displaylist is null.");
+                throw new InvalidOperationException("Can't initialize the scene manager. Resource or displaylist is null.");
             }
         }
 

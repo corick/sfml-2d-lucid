@@ -31,7 +31,11 @@ namespace Lucid.Framework.Entities
         public void Dispose()
         {
             //FIXME: Do the IDisposable pattern right.
-            entities.ForEach((Entity e) => { e.Dispose(); });
+            foreach (Entity e in entities)
+            {
+                e.UnloadResources(owner.Resources);
+                e.Dispose();
+            }
         }
 
     }
