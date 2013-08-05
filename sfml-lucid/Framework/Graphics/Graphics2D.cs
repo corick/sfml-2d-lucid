@@ -57,7 +57,7 @@ namespace Lucid.Framework.Graphics
             throw new NotImplementedException();
         }
 
-        public void DrawText(Vector position)
+        public void DrawText(string text, object font, Vector position)
         {
             throw new NotImplementedException();
         }

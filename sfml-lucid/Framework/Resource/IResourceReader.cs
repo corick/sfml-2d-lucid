@@ -9,6 +9,6 @@ namespace Lucid.Framework.Resource
             get;
         }
 
-        T LoadResource<T>(ZipPack from, string path);
+        T LoadResource<T>(ResourceManager resources, ZipPack from, string path);
     }
 }

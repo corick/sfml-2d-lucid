@@ -13,11 +13,10 @@ namespace Lucid.Framework
     /// The main game class for ... TODO DOC
     /// </summary>
     public class Game
-        : IDisposable
+        : IDisposable 
     {
-        private bool disposing;
+        private bool disposed;
 
-        //TODO: Put some of this into a service container thing.
         //TODO: Find out which ones of these belong as services.
         protected IWindow           window;
         protected GraphicsContainer displayList;
@@ -44,9 +43,13 @@ namespace Lucid.Framework
 
         public Game(IWindow window)
         {
-            disposing = false;
+            disposed = false;
             this.window = window;
-            Debug.Trace("Assembly: {0}.", Assembly.GetExecutingAssembly().ToString());
+            Debug.Trace("Lucid: {0}.", Assembly.GetExecutingAssembly().ToString());
+            Debug.Trace("----");
+            Debug.Trace("Pre-Alpha.");
+            Debug.Trace("--corick");
+            Debug.Trace("----");
             Debug.Trace("Creating Game.");
             Services = new Services();
         }
@@ -64,10 +67,14 @@ namespace Lucid.Framework
 
         public void Dispose()
         {
-            screenManager.CurrentScreen.Dispose();
-            resources.Dispose();
-            //Dispose graphics necessary?
-            window.Dispose();
+            if (!disposed)
+            {
+                screenManager.CurrentScreen.Dispose();
+                resources.Dispose();
+                //Dispose graphics necessary?
+                window.Dispose();
+                disposed = true;
+            }
         }
 
         protected virtual void Initialize() { }
@@ -76,7 +83,7 @@ namespace Lucid.Framework
         {
             //Create subsystems.
             window.Initialize();
-            IDisplayDevice display = window.DisplayProvider;
+            IDisplayDevice display = window.DisplayDevice;
             
             //Initialize resource manager TODO: Read config for path.
             Debug.Trace("Loading lpz packfile from resources.lpz.");

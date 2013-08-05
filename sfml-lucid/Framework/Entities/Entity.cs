@@ -27,6 +27,12 @@ namespace Lucid.Framework.Entities
             set;
         }
 
+        public int ID
+        {
+            get;
+            private set;
+        }
+
         protected EntityManager Manager
         {
             get;
@@ -41,6 +47,8 @@ namespace Lucid.Framework.Entities
             RectSize = new System.Drawing.Size(0, 0);
 
             Components = new List<Component>();
+
+            ID = manager.NextID();
         }
 
         protected abstract void InitializeComponents();
@@ -52,6 +60,12 @@ namespace Lucid.Framework.Entities
             Components.ForEach((Component c) => { c.Initialize(screen); });
 
             LoadResources(screen);
+        }
+
+        public void ReceiveMessage(Message message) 
+        {
+            foreach (Component c in Components)
+                c.ReceiveMessage(message);
         }
 
         private void LoadResources(Screen screen)
@@ -69,9 +83,12 @@ namespace Lucid.Framework.Entities
             foreach (Component c in Components) c.UnloadResources(resources);
         }
 
-        public void Dispose()
+        public void Destroy()
         {
-            
+            //FIXME: Doesn't need to be Dispose(). Should be Cleanup().
+            //EM should call UnloadResources(rsc) then Cleanup() when this is
+            //remove()'d.
+            foreach (Component c in Components) c.Destroy();
         }
     }
 }

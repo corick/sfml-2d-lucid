@@ -13,7 +13,6 @@ namespace Lucid.Framework.Entities.Components
     /// A entity component, or a discrete part of an entity.
     /// </summary>
     public abstract class Component
-        : IDisposable
     {
         /// <summary>
         /// The Entity that owns this componnet.
@@ -58,8 +57,24 @@ namespace Lucid.Framework.Entities.Components
         public virtual void UnloadResources(ResourceManager rsc) { }
 
         /// <summary>
+        /// Receives a message broadcasted to each Component in the Entity
+        /// using Entity.SendMessage(string, object).
+        /// This is used to notify each component of events (For example, if the player takes 
+        /// damage, many components need to know that it happened.)
+        /// 
+        /// The string param of the Message is the message type and looks like
+        /// "col_entity_collision_other". 
+        /// The object is the payload, and components which are listening for a specific message
+        /// type must explicitly cast it to the right type. This is kind of a c-fuck tho so we'll
+        /// work something better out later.
+        /// </summary>
+        /// <param name="message">The Message that has been broadcasted.</param>
+        public virtual void ReceiveMessage(Message message) { }
+
+
+        /// <summary>
         /// Called when the component is destroyed (eg when the Entity is disposed as well.)
         /// </summary>
-        public virtual void Dispose() { }
+        public virtual void Destroy() { }
     }
 }

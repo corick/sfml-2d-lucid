@@ -32,10 +32,10 @@ namespace Lucid.Framework.Entities.Components
             Parent.Position = newPos;
         }
 
-        public override void Dispose()
+        public override void Destroy()
         {
             tnref.Update -= OnUpdate;
-            base.Dispose();
+            base.Destroy();
         }
     }
 }

@@ -42,6 +42,7 @@ namespace Lucid.Framework.Resource
 
             if (refCount >= 0)
             {
+                Debug.Trace("0 refs for {0}, unloading.", this);
                 reference.Unload(rsc);
                 reference = default(T);
             }

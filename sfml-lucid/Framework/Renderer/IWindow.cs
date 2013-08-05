@@ -44,7 +44,7 @@ namespace Lucid.Framework.Renderer
         /// The display provider for this window. Manages texture loading and draw calls.
         /// Needs to be initialized first.
         /// </summary>
-        IDisplayDevice DisplayProvider
+        IDisplayDevice DisplayDevice
         {
             get;
         }

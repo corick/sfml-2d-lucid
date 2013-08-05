@@ -50,7 +50,7 @@ namespace Lucid.Framework.Resource
             else
             {
                 IResourceReader l = readers[typeof(T)];
-                var rsc = l.LoadResource<T>(resources, path);
+                var rsc = l.LoadResource<T>(this, resources, path);
                 cache.Cache<T>(path, rsc);
                 return rsc;
             }

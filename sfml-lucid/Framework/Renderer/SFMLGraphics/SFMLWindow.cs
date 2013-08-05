@@ -41,7 +41,7 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             }
         }
 
-        public IDisplayDevice DisplayProvider
+        public IDisplayDevice DisplayDevice
         {
             get;
             private set;
@@ -77,7 +77,7 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             View pcView = new View(new FloatRect(0, 0, 800, 600));
             window.SetView(pcView);
 
-            DisplayProvider = new SFMLDisplayDevice(this.window);
+            DisplayDevice = new SFMLDisplayDevice(this.window);
             window.Closed += OnClose;
         }
 
@@ -99,7 +99,9 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             window.Dispose();
             window.Closed -= OnClose;
             window = null;
-            //TODO: destroy the display provider
+            Debug.Trace("SFML window closed.");
+            //NOTE: I don't think that we need to ever dispose a DisplayDevice,
+            //under SFML at least, but if we ever need to do, it goes here.
         }
 
         private void OnClose(object sender, EventArgs e)

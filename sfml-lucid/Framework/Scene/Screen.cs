@@ -66,7 +66,7 @@ namespace Lucid.Framework.Scene
         private bool disposed = false;
         public void Dispose()
         {
-            Entities.Dispose(); //This should be enough to clean each up.
+            Entities.Destroy(); //This should be enough to clean each up.
             //DipslayObjects.Dispose();
             //FIXME: Do this right.
             disposed = true;

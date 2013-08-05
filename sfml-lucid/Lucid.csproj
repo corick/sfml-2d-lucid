@@ -67,14 +67,18 @@
     <Compile Include="Framework\Entities\Components\SimpleSpriteComponent.cs" />
     <Compile Include="Framework\Entities\Entity.cs" />
     <Compile Include="Framework\Entities\EntityManager.cs" />
+    <Compile Include="Framework\Entities\Message.cs" />
     <Compile Include="Framework\Game.cs" />
+    <Compile Include="Framework\Graphics\Sheet\Animation.cs" />
     <Compile Include="Framework\Graphics\Camera.cs" />
     <Compile Include="Framework\Graphics\DisplayObjectComparer.cs" />
     <Compile Include="Framework\Graphics\Graphics2D.cs" />
     <Compile Include="Framework\Graphics\IDisplayObject.cs" />
     <Compile Include="Framework\Graphics\IGraphicsContainer.cs" />
     <Compile Include="Framework\Graphics\PrimitiveType.cs" />
+    <Compile Include="Framework\Graphics\Sheet\Frame.cs" />
     <Compile Include="Framework\Graphics\Sprite.cs" />
+    <Compile Include="Framework\Graphics\Sheet\SpriteSheet.cs" />
     <Compile Include="Framework\Graphics\TextureInfo.cs" />
     <Compile Include="Framework\Input\InputManager.cs" />
     <Compile Include="Framework\Input\KeyFlags.cs" />
@@ -96,6 +100,7 @@
     <Compile Include="Framework\Resource\ResourceCache.cs" />
     <Compile Include="Framework\Resource\ResourceHandle.cs" />
     <Compile Include="Framework\Resource\ResourceManager.cs" />
+    <Compile Include="Framework\Resource\Texture\SpriteSheetReader.cs" />
     <Compile Include="Framework\Resource\ZipPack.cs" />
     <Compile Include="Framework\Resource\Texture\TextureReader.cs" />
     <Compile Include="Framework\Scene\ScreenManager.cs" />
@@ -125,7 +130,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Framework\Entities\MessageListeners\" />
+    <Folder Include="Framework\Renderer\GLGraphics\" />
     <Folder Include="Framework\Resource\Sound\" />
     <Folder Include="Framework\Sound\" />
   </ItemGroup>

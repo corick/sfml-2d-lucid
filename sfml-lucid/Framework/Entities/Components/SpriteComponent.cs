@@ -37,7 +37,7 @@ namespace Lucid.Framework.Entities.Components
             rsc.Release<Texture>(resPath);
         }
 
-        public override void Dispose()
+        public override void Destroy()
         {
             update.Update -= OnUpdate;
         }

@@ -12,7 +12,7 @@ namespace Lucid.Framework.Entities.Components
 
         public void Dispose()
         {
-            this.ForEach((Component c) => { c.Dispose(); });
+            this.ForEach((Component c) => { c.Destroy(); });
         }
     }
 }

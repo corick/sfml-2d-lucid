@@ -25,7 +25,8 @@ namespace Lucid.Framework.Graphics
             set
             {
                 depth = value;
-                OnDepthChange(this, new EventArgs());
+                //OnDepthChange(this, new EventArgs()); //I'm pretty sure this is wrong. We want to fire our own.
+                if (DepthChanged != null) this.DepthChanged(this, new EventArgs());
             }
         }
 
