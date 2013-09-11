@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using Lucid.Framework.Graphics.Sheet;
 
-
+//FIXME: minor: don't use SubRectangle, instead expose the Size in the sc so we don't call the getter.
 namespace Lucid.Framework.Graphics
 {
     public class Sprite //TODO: Add animation stuff.
@@ -46,34 +47,40 @@ namespace Lucid.Framework.Graphics
             set;
         }
 
-        private Texture texture;
-
-        protected Size  size;
-        protected Point texOffset;
-
-        public Sprite(Texture texture, IPositionComponent position, int depth = 1) //FIXME: Don't pass the texture in manually
+        SpriteSheet spriteSheet;
+        Animator animator;
+        
+        //Don't call me usually. 
+        public Sprite(Texture texture, string texturePath, IPositionComponent position, int depth = 1) 
         {
             Visible = true;
             this.depth = depth;
-            this.texture = texture;
+
+            spriteSheet = new SpriteSheet(texture, texturePath);
+            animator = spriteSheet.CreateAnimator();
 
             this.Position = position;
-
-            //Set the h/w for this. It'll be re-set in the ctor for sprite sheets.
-            size.Width = texture.Info.Width;
-            size.Height = texture.Info.Height;
         }
 
-        //TODO: Sprite(SpriteSheet, ipc, depth) 
-        //TODO: Animation, and keyed sprite sheet stuff.
+        public Sprite(SpriteSheet sheet, IPositionComponent position, int depth = 1)
+        {
+            Visible = true;
+            this.depth = depth;
+
+            this.spriteSheet = sheet;
+            this.Position = position;
+
+            animator = spriteSheet.CreateAnimator();
+            animator.SetAnimation("hit");
+        }
 
         public virtual void Initialize()
         {
-            if (Position.RectSize.Width  != size.Width
-             || Position.RectSize.Height != size.Height)
+            if (Position.RectSize.Width  != animator.SubRectangle.Width
+             || Position.RectSize.Height != animator.SubRectangle.Height)
             {
                 //Set the size to the texture's size.
-                Size s = new Size(texture.Info.Width, texture.Info.Height);
+                Size s = new Size(animator.SubRectangle.Width, animator.SubRectangle.Height);
                 Position.RectSize = s;
             }
         }
@@ -81,7 +88,11 @@ namespace Lucid.Framework.Graphics
         public void Draw(Graphics2D gfx)
         {
             //FIXME: Color, etc render property stuff.
-            gfx.DrawTexture(texture, Position.Position, Position.RectSize, new Rectangle(texOffset, size), Camera, Color.White);
+            gfx.DrawTexture(spriteSheet.SheetTexture, Position.Position, Position.RectSize, 
+                            animator.SubRectangle, Camera, Color.White);
+
+            //FIXME: We just want to see if this works...
+            animator.Update(0.33f);
         }
     }
 }

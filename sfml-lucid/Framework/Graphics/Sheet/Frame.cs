@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Lucid.Framework.Graphics.Sheet
 {
-    internal class Frame
+    public class Frame
     {
-        public float Time
+        public float Time //The time (in msec) to display.
         {
             get;
             private set;

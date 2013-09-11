@@ -17,7 +17,7 @@ namespace TestGame.Entities
 
         protected override void InitializeComponents()
         {
-            SimpleSpriteComponent c = new SimpleSpriteComponent(this);
+            SpriteComponent c = new SpriteComponent(this, @"spritesheet/kit.bss");
             SimpleMoveCopmonent c2 = new SimpleMoveCopmonent(this);
             Components.Add(c);
             Components.Add(c2);

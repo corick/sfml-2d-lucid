@@ -36,6 +36,11 @@ namespace Lucid.Framework.Resource //TODO: Separate this into another dll.
             return handle;
         }
 
+        public Type GetResourceType(string path)
+        {
+            return manifest.GetFileType(path);
+        }
+
         public void Dispose()
         {
             if (packFile != null)

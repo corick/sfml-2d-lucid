@@ -79,13 +79,11 @@ namespace Lucid.Framework.Entities
 
         public void UnloadResources(ResourceManager resources)
         {
-            //FIXME: This doesn't work right now because of the way rsc is passed.
             foreach (Component c in Components) c.UnloadResources(resources);
         }
 
         public void Destroy()
         {
-            //FIXME: Doesn't need to be Dispose(). Should be Cleanup().
             //EM should call UnloadResources(rsc) then Cleanup() when this is
             //remove()'d.
             foreach (Component c in Components) c.Destroy();

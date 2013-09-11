@@ -25,6 +25,8 @@ namespace Lucid.Framework
         protected UpdateNotifier    updateNotifier;
         protected ResourceManager   resources;
 
+        //Add gamepad too.
+
         public Services Services
         {
             get;
@@ -48,7 +50,7 @@ namespace Lucid.Framework
             Debug.Trace("Lucid: {0}.", Assembly.GetExecutingAssembly().ToString());
             Debug.Trace("----");
             Debug.Trace("Pre-Alpha.");
-            Debug.Trace("--corick");
+            Debug.Trace("--corick <3");
             Debug.Trace("----");
             Debug.Trace("Creating Game.");
             Services = new Services();
@@ -92,20 +94,30 @@ namespace Lucid.Framework
 
             Debug.Trace("Initializing services.");
             graphics = new Graphics2D(display);
+            Debug.Trace("Graphics.");
             displayList = new GraphicsContainer();
             Services.Register<GraphicsContainer>(displayList); //Register the display list root.
 
+            Debug.Trace("Gamepad.");
+            Input.Gamepad gamepad = new Input.Gamepad(new Input.SFMLInput.SFMLInputProvider());
+            Services.Register<Input.Gamepad>(gamepad);
+
             //Update notifier too!
+            Debug.Trace("Update notifier.");
             updateNotifier = new UpdateNotifier();
             Services.Register<UpdateNotifier>(updateNotifier);
 
+            Debug.Trace("Screen Manager.");
             screenManager = new ScreenManager(this);
             Services.Register<ScreenManager>(screenManager);
 
+
+            Debug.Trace("Setting up default screen. (debug.)");
             //Let's set up the screen now.
             screenManager.SwitchScreen(new Screen());
             screenManager.EndFrame(); //Manually call this here. HACK.
 
+            Debug.Trace("Initializing.");
             Initialize();
         }
 

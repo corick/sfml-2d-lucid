@@ -1,0 +1,27 @@
+﻿Gamepad layout:
+
+This is hard-coded but soon won't be. 
+
+---
+
+up
+down
+left
+right
+accept
+cancel
+action
+menu
+use
+(and others I'm sure I'll think of)
+
+---
+
+For now you'll have to rely on this, but eventually it will be read from the config file.
+e.g.: 
+
+[KeyBinds]
+action SFML.Keyboard.Key.Z SFML.Keyboard.Key.Enter
+
+and use reflection to map the keys etc.
+

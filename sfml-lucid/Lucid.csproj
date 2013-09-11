@@ -76,13 +76,18 @@
     <Compile Include="Framework\Graphics\IDisplayObject.cs" />
     <Compile Include="Framework\Graphics\IGraphicsContainer.cs" />
     <Compile Include="Framework\Graphics\PrimitiveType.cs" />
+    <Compile Include="Framework\Graphics\Sheet\Animator.cs" />
     <Compile Include="Framework\Graphics\Sheet\Frame.cs" />
     <Compile Include="Framework\Graphics\Sprite.cs" />
     <Compile Include="Framework\Graphics\Sheet\SpriteSheet.cs" />
     <Compile Include="Framework\Graphics\TextureInfo.cs" />
-    <Compile Include="Framework\Input\InputManager.cs" />
-    <Compile Include="Framework\Input\KeyFlags.cs" />
-    <Compile Include="Framework\Input\KeyState.cs" />
+    <Compile Include="Framework\Input\Gamepad.cs" />
+    <Compile Include="Framework\Input\IInputProvider.cs" />
+    <Compile Include="Framework\Input\InputElement.cs" />
+    <Compile Include="Framework\Input\InputState.cs" />
+    <Compile Include="Framework\Input\InputStateFlags.cs" />
+    <Compile Include="Framework\Input\SFMLInput\SFMLInputElement.cs" />
+    <Compile Include="Framework\Input\SFMLInput\SFMLInputProvider.cs" />
     <Compile Include="Framework\IPositionComponent.cs" />
     <Compile Include="Framework\Position.cs" />
     <Compile Include="Framework\Renderer\IWindow.cs" />
@@ -121,6 +126,7 @@
     <Content Include="csfml-window-2.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Framework\Input\SFMLInput\GamepadLayout.txt" />
     <Content Include="Framework\Resource\ManifestFormat.txt" />
     <Content Include="libsndfile-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

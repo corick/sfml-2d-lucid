@@ -43,8 +43,9 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
 
             sprite.Texture = tex;
             sprite.TextureRect = new IntRect(sourceRect.Left, sourceRect.Top, sourceRect.Width, sourceRect.Height);
-            sprite.Scale = new SFML.Window.Vector2f((float)destRect.X / (float)sourceRect.X,
-                                                    (float)destRect.Y / (float)sourceRect.Y);
+            //sprite.Scale = new SFML.Window.Vector2f((float)destRect.X / (float)sourceRect.X,
+            //                                     (float)destRect.Y / (float)sourceRect.Y);
+            sprite.Scale = new SFML.Window.Vector2f(1, 1);
             sprite.Color = SFML.Graphics.Color.White; //FIXME: Map S.D.Colors to SF.G.Colors.
             sprite.Position = new SFML.Window.Vector2f(destRect.X, destRect.Y);
 

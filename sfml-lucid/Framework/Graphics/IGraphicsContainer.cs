@@ -11,6 +11,5 @@ namespace Lucid.Framework.Graphics
     {
         void Add(IDisplayObject o);
         void Remove(IDisplayObject o);
-        //void Clear(bool andDispose);
     }
 }

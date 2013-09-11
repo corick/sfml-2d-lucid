@@ -14,7 +14,7 @@ namespace Lucid.Framework.Entities
             private set;
         }
 
-        public object Message
+        public object Content
         {
             get;
             private set;
@@ -23,7 +23,7 @@ namespace Lucid.Framework.Entities
         public Message(string messageType, object message)
         {
             Type = messageType;
-            Message = message;
+            Content = message;
         }
     }
 }

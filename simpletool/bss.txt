@@ -1,0 +1,9 @@
+﻿header: "bss1" string
+texture loc: strin
+size w/h int int
+content-length int (how many animations)
+repeated:
+key string
+content-length int (how many frames)
+x/y as int
+delay as float msecs

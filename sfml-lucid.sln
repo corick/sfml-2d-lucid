@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lucidpack", "lucidpack\lucidpack.csproj", "{08E9AB89-20C5-4370-95D5-CA21B3369C97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucidTools", "LucidTools\LucidTools.csproj", "{4CF15A4F-CBEB-460A-BEC2-BFB51D1C4089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpletool", "simpletool\simpletool.csproj", "{DFD2D860-E363-435D-9FFA-C2E74E35E987}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{08E9AB89-20C5-4370-95D5-CA21B3369C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08E9AB89-20C5-4370-95D5-CA21B3369C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08E9AB89-20C5-4370-95D5-CA21B3369C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF15A4F-CBEB-460A-BEC2-BFB51D1C4089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF15A4F-CBEB-460A-BEC2-BFB51D1C4089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF15A4F-CBEB-460A-BEC2-BFB51D1C4089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF15A4F-CBEB-460A-BEC2-BFB51D1C4089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD2D860-E363-435D-9FFA-C2E74E35E987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD2D860-E363-435D-9FFA-C2E74E35E987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD2D860-E363-435D-9FFA-C2E74E35E987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD2D860-E363-435D-9FFA-C2E74E35E987}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

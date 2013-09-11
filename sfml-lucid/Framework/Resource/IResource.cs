@@ -8,8 +8,9 @@ using Lucid.Framework.Resource;
 
 namespace Lucid.Framework.Resource
 {
+    //Note: IResources must be immutabele, or override GetHashCode().
     public interface IResource
     {
-        void Unload(ResourceManager rsc);
+        void OnUnload(ResourceManager res);
     }
 }

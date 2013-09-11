@@ -22,7 +22,7 @@ namespace Lucid.Framework.Entities.Components
         public override void LoadResources(Resource.ResourceManager rsc)
         {
             Texture tex = rsc.Load<Texture>(path);
-            sprite = new Sprite(tex, Parent);           
+            sprite = new Sprite(tex,path, Parent);           
         }
 
         public override void DisplayAttach(GraphicsContainer children)

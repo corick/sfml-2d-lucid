@@ -1,6 +1,8 @@
 ﻿using Lucid.Framework.Renderer;
 using System;
 using System.Collections.Generic;
+using Lucid.Framework.Resource.Texture;
+using Lucid.Framework.Graphics.Sheet;
 
 namespace Lucid.Framework.Resource
 {
@@ -32,6 +34,8 @@ namespace Lucid.Framework.Resource
             Texture.TextureReader texReader = new Texture.TextureReader(disp.GetTextureProvider());
             AddReader(typeof(Graphics.Texture), texReader);
 
+            AddReader(typeof(SpriteSheet), new SpriteSheetReader());
+
             cache = new ResourceCache();
         }
 
@@ -54,6 +58,11 @@ namespace Lucid.Framework.Resource
                 cache.Cache<T>(path, rsc);
                 return rsc;
             }
+        }
+
+        public Type GetResourceType(string path)
+        {
+            return resources.GetResourceType(path);
         }
 
         /// <summary>

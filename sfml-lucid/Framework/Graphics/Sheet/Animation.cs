@@ -7,14 +7,21 @@ using System.Threading.Tasks;
 
 namespace Lucid.Framework.Graphics.Sheet
 {
+    /// <summary>
+    /// A container for sprite sheet subrectangles.
+    /// Manages time-step stuff as well.
+    /// </summary>
     public class Animation
-    {
-        private const int FRAME_TIME_TICKS = 33 * 10000; //FIXME: This assumes that it's 33fps.
-
+    {   
         private List<Frame> frames;
-        private DateTime previousTime;
-        private DateTime nextFrame;
-        private int currentFrameIndex;
+
+        public int FrameCount
+        {
+            get
+            {
+                return frames.Count;
+            }
+        }
 
         public string Key
         {
@@ -22,40 +29,27 @@ namespace Lucid.Framework.Graphics.Sheet
             private set;
         }
 
-        public Size AnimationSize
+        public Animation(Size size, string key = "default-static")
         {
-            get;
-            private set;
+            this.frames = new List<Frame>();
+            this.frames.Add(new Frame(0.0f, Point.Empty));
+            this.Key = key;
         }
 
-        public Rectangle SubRectangle
+        public Animation(List<Frame> frames, string key)
         {
-            get
-            {
-                return new Rectangle(frames[currentFrameIndex].Position, AnimationSize);
-            }
-        }
-
-        public Animation(string key, List<Frame> frames, Size size)
-        {
-            Key = key;
             this.frames = frames;
-            this.AnimationSize = size;
+            this.Key = key;
         }
 
-        public void Update(DateTime time)
+        public Point GetPoint(int index)
         {
-            if (previousTime == DateTime.MinValue) 
-                previousTime = time.AddTicks(-FRAME_TIME_TICKS);
+            return frames[index].Position;
+        }
 
-            if (nextFrame.CompareTo(time) != -1)
-            {
-                //After next frame. Switch.
-                nextFrame.AddTicks(FRAME_TIME_TICKS); //FIXME: This is wrong.
-
-            }
-
-            previousTime = time;
+        public Frame GetFrame(int index)
+        {
+            return frames[index];
         }
     }
 }

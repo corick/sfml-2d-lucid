@@ -30,7 +30,7 @@ namespace Lucid.Framework.Graphics
             this.disposeCallback = disposeCallback;
         }
 
-        public void Unload(ResourceManager rsc)
+        public void OnUnload(ResourceManager rsc)
         {
             disposeCallback.Invoke(TextureData);
             Debug.Trace("Unloading texture.");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Lucid.Framework.Resource
 {
-    public class ResourceCache
+    public class ResourceCache //FIXME: We need to be able to mark types non-cacheable.
     {
         private Dictionary<string, object> references; //FIXME: <..,IResource>.
 
@@ -45,7 +45,7 @@ namespace Lucid.Framework.Resource
             //The reference count doesn't matter when the thing's done.
             foreach (var x in this.references)
             {
-                (x.Value as IResource).Unload(parent);
+                (x.Value as IResource).OnUnload(parent);
             }
         }
 
