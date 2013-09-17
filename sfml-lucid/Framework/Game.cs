@@ -88,7 +88,7 @@ namespace Lucid.Framework
             IDisplayDevice display = window.DisplayDevice;
             
             //Initialize resource manager TODO: Read config for path.
-            Debug.Trace("Loading lpz packfile from resources.lpz.");
+            Debug.Trace("Loading lpz packfile from {0}.", "resources.lpz");
             resources = new ResourceManager("resources.lpz", display);
             Services.Register<ResourceManager>(resources);
 

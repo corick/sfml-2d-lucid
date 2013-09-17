@@ -1,5 +1,7 @@
 ﻿using System;
 
+using System.Configuration;
+
 namespace Lucid.Framework
 {
     /// <summary>

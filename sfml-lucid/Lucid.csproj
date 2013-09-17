@@ -95,6 +95,7 @@
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLTextureProvider.cs" />
     <Compile Include="Framework\Graphics\GraphicsContainer.cs" />
     <Compile Include="Framework\Resource\AutoReference.cs" />
+    <Compile Include="Framework\Resource\ImportExtensionAttribute.cs" />
     <Compile Include="Framework\Resource\IResource.cs" />
     <Compile Include="Framework\Resource\ITextureProvider.cs" />
     <Compile Include="Framework\Graphics\Texture.cs" />
@@ -105,9 +106,11 @@
     <Compile Include="Framework\Resource\ResourceCache.cs" />
     <Compile Include="Framework\Resource\ResourceHandle.cs" />
     <Compile Include="Framework\Resource\ResourceManager.cs" />
+    <Compile Include="Framework\Resource\ScreenDesigner\ScreenDefinition.cs" />
     <Compile Include="Framework\Resource\Texture\SpriteSheetReader.cs" />
     <Compile Include="Framework\Resource\ZipPack.cs" />
     <Compile Include="Framework\Resource\Texture\TextureReader.cs" />
+    <Compile Include="Framework\Scene\IScreenTransition.cs" />
     <Compile Include="Framework\Scene\ScreenManager.cs" />
     <Compile Include="Framework\Scene\Screen.cs" />
     <Compile Include="Framework\Services.cs" />

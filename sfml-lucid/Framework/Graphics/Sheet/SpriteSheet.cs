@@ -11,6 +11,7 @@ namespace Lucid.Framework.Graphics.Sheet
 {
     //FIXME: Can't load the same sheet multiple times, the cached version will be the one loaded,
     //strip the animation logic out into the Sprite class, or make a nocache attribute for Iresources?
+    [ImportExtension("bss")]
     public class SpriteSheet //Possibly actually change this to S.S.Handle, and have a dumb container object for SpriteSheets or something.
         : IResource
     {

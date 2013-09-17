@@ -58,9 +58,18 @@ namespace Lucid.Framework.Scene
         /// Begin transitioning to the next screen.
         /// </summary>
         /// <param name="next"></param>
-        public void SwitchScreen(Screen next)
+        public void SwitchScreen(Screen next) //FIXME: Protected.
         {
             NextScreen = next;
+        }
+
+        public void BeginTransition(string screenResource)
+        {
+            var resources = Services.Get<ResourceManager>();
+            //TODO: Load screen-y thing here.
+
+            //Make a :p
+
         }
 
         /// <summary>

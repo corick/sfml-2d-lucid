@@ -4,6 +4,7 @@ using Lucid.Framework.Resource;
 
 namespace Lucid.Framework.Graphics
 {
+    [ImportExtension("png")]
     public class Texture
         : IResource 
     {

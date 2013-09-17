@@ -9,10 +9,17 @@ namespace lucidpack
     internal class ManifestWriter
     {
         private List<string> entries;
+        private LucidityCommon.Project.Resources.ResourceMapper map;
 
         public ManifestWriter()
         {
             entries = new List<string>();
+            map = new LucidityCommon.Project.Resources.ResourceMapper();
+        }
+
+        public void Add(string path)
+        {
+            entries.Add(path + ">" + map.Map(path));
         }
 
         public void Add(string path, Type type)

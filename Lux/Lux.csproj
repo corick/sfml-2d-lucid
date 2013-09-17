@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{08E9AB89-20C5-4370-95D5-CA21B3369C97}</ProjectGuid>
+    <ProjectGuid>{659DDFE7-C0C7-4475-BCC5-A40787BB6EEE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>lucidpack</RootNamespace>
-    <AssemblyName>lucidpack</AssemblyName>
+    <RootNamespace>Lux</RootNamespace>
+    <AssemblyName>Lux</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManifestWriter.cs" />
+    <Compile Include="LuxGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -49,14 +49,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LucidPack.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LucidityCommon\LucidityCommon.csproj">
-      <Project>{ed76b7a2-60b8-4ea2-bc0b-436b02029eea}</Project>
-      <Name>LucidityCommon</Name>
+    <ProjectReference Include="..\sfml-lucid\Lucid.csproj">
+      <Project>{90ca7b1d-3600-4c49-b699-da2428872cf5}</Project>
+      <Name>Lucid</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
