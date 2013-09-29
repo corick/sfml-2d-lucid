@@ -35,6 +35,9 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="sfmlnet-audio-2, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Devel\dotnet\sfml\lib\sfmlnet-audio-2.dll</HintPath>
@@ -60,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Framework\Config.cs" />
     <Compile Include="Framework\Debug.cs" />
+    <Compile Include="Framework\DynamicProperties.cs" />
     <Compile Include="Framework\Entities\Components\Component.cs" />
     <Compile Include="Framework\Entities\Components\ComponentList.cs" />
     <Compile Include="Framework\Entities\Components\SpriteComponent.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Framework\Entities\EntityManager.cs" />
     <Compile Include="Framework\Entities\Message.cs" />
     <Compile Include="Framework\Game.cs" />
+    <Compile Include="Framework\Globals.cs" />
     <Compile Include="Framework\Graphics\Sheet\Animation.cs" />
     <Compile Include="Framework\Graphics\Camera.cs" />
     <Compile Include="Framework\Graphics\DisplayObjectComparer.cs" />
@@ -95,6 +100,7 @@
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLTextureProvider.cs" />
     <Compile Include="Framework\Graphics\GraphicsContainer.cs" />
     <Compile Include="Framework\Resource\AutoReference.cs" />
+    <Compile Include="Framework\Resource\ImportDefaultFolderAttribute.cs" />
     <Compile Include="Framework\Resource\ImportExtensionAttribute.cs" />
     <Compile Include="Framework\Resource\IResource.cs" />
     <Compile Include="Framework\Resource\ITextureProvider.cs" />
@@ -142,6 +148,9 @@
     <Folder Include="Framework\Renderer\GLGraphics\" />
     <Folder Include="Framework\Resource\Sound\" />
     <Folder Include="Framework\Sound\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

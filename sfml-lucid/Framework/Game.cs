@@ -5,7 +5,9 @@ using Lucid.Framework.Renderer;
 using Lucid.Framework.Resource;
 using Lucid.Framework.Scene;
 
-using System.Reflection; //For debug message. Remove me :)
+using System.Reflection;
+using System.Dynamic;
+using Lucid.Framework.Input; //For debug message. Remove me :)
 
 namespace Lucid.Framework
 {
@@ -24,6 +26,8 @@ namespace Lucid.Framework
         protected ScreenManager     screenManager;
         protected UpdateNotifier    updateNotifier;
         protected ResourceManager   resources;
+        protected Gamepad           gamepad;
+        protected dynamic           globals; 
 
         //Add gamepad too.
 
@@ -53,7 +57,15 @@ namespace Lucid.Framework
             Debug.Trace("--corick <3");
             Debug.Trace("----");
             Debug.Trace("Creating Game.");
+
             Services = new Services();
+
+            globals = new Globals();
+
+            //FIXME: HACK: Don't manually add default properties.
+            globals.ScreenWidth   = 800;
+            globals.ScreenHeight  = 600;
+            globals.ResourcesPath = "resources.lpz";
         }
 
         public void Run()
@@ -84,12 +96,12 @@ namespace Lucid.Framework
         private void InternalInitialize()
         {
             //Create subsystems.
-            window.Initialize();
+            window.Initialize(); //TODO: WindowInitParams.
             IDisplayDevice display = window.DisplayDevice;
-            
+
             //Initialize resource manager TODO: Read config for path.
             Debug.Trace("Loading lpz packfile from {0}.", "resources.lpz");
-            resources = new ResourceManager("resources.lpz", display);
+            resources = new ResourceManager(globals.ResourcesPath, display);
             Services.Register<ResourceManager>(resources);
 
             Debug.Trace("Initializing services.");

@@ -14,5 +14,12 @@ namespace Lux
             game.Run();
             game.Dispose();
         }
+
+        public static void Launch(string configPath)
+        {
+            LuxGame game = new LuxGame(configPath);
+            game.Run();
+            game.Dispose();
+        }
     }
 }

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lucidpack
+namespace LucidityCommon.Project.Resources
 {
-    internal class ManifestWriter
+    internal class ManifestBuilder
     {
         private List<string> entries;
         private LucidityCommon.Project.Resources.ResourceMapper map;
 
-        public ManifestWriter()
+        public ManifestBuilder()
         {
             entries = new List<string>();
             map = new LucidityCommon.Project.Resources.ResourceMapper();

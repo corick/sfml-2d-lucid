@@ -37,6 +37,10 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -52,6 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Framework\DynamicPropertiesTests.cs" />
     <Compile Include="HeadlessGame.cs" />
     <Compile Include="Input\InputTests.cs" />
     <Compile Include="Mocking\MockInputProvider.cs" />
@@ -63,6 +68,9 @@
       <Project>{90ca7b1d-3600-4c49-b699-da2428872cf5}</Project>
       <Name>Lucid</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

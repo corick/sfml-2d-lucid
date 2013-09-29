@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lucidity
+namespace Lucidity.Controls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProjectPropertiesControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProjectPropertiesControl : UserControl
     {
-        public MainWindow()
+        public ProjectPropertiesControl()
         {
             InitializeComponent();
         }
