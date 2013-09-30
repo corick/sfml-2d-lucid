@@ -43,7 +43,7 @@ namespace Lucidity.Project
             }
         }
 
-        public void CreateConfig(string path)
+        private void CreateConfig(string path)
         {
             //FIXME: DRY; pull this out into project?
             using (StreamWriter fs = new StreamWriter(File.Open(path, FileMode.Open)))

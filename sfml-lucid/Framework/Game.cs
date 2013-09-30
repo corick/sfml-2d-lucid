@@ -92,15 +92,17 @@ namespace Lucid.Framework
         }
 
         protected virtual void Initialize() { }
+        protected virtual void PreInitialize() { }
 
         private void InternalInitialize()
         {
+            PreInitialize();
             //Create subsystems.
             window.Initialize(); //TODO: WindowInitParams.
             IDisplayDevice display = window.DisplayDevice;
 
             //Initialize resource manager TODO: Read config for path.
-            Debug.Trace("Loading lpz packfile from {0}.", "resources.lpz");
+            Debug.Trace("Loading lpz packfile from {0}.", globals.ResourcesPath);
             resources = new ResourceManager(globals.ResourcesPath, display);
             Services.Register<ResourceManager>(resources);
 

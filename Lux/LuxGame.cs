@@ -24,13 +24,11 @@ namespace Lux
         }
 
         //Read data from lux config.
-        protected override void Initialize()
+        protected override void PreInitialize()
         {
             //Load config..
             if (jsConfigPath != null)
                 ((Globals)globals).LoadConfig(jsConfigPath);
-
-            base.Initialize();
         }
     }
 }

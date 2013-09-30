@@ -21,9 +21,14 @@ namespace Lucid.Framework
             table = new Dictionary<string, object>();
         }
 
-        public void LoadJson(string text)
+        public void ImportProperties(ExpandoObject obj)
         {
-            throw new NotImplementedException();
+            foreach (var property in obj)
+            {
+                if (table.ContainsKey(property.Key))
+                    table[property.Key] = property.Value;
+                else table.Add(property.Key, property.Value);
+            }
         }
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)

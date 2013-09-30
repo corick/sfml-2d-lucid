@@ -30,6 +30,7 @@ namespace LucidityCommon.Project.Resources
         public string GetManifest()
         {
             StringBuilder b = new StringBuilder();
+            b.Append("#Lucid Manifest -- Auto generated\n");
             entries.ForEach((e) => { b.Append(e); });
             return b.ToString();
         }
