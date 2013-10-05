@@ -21,6 +21,9 @@ namespace Lucid.Framework
                 confParams = serializer.Deserialize(reader, typeof(ExpandoObject));
             }
 
+            //TODO: Whitelist properties here?? In serializer as a schema???
+            //As it is right now we can just put whatever we want in the config.
+
             ImportProperties(confParams as ExpandoObject);
         }
     }

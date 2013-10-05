@@ -10,7 +10,10 @@ namespace Lux
     {
         public static void Main(string[] args)
         {
-            LuxGame game = new LuxGame();
+            LuxGame game;
+            if (args.Length >= 1)
+                game = new LuxGame(args[0]);
+            else game = new LuxGame();
             game.Run();
             game.Dispose();
         }

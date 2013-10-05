@@ -18,8 +18,6 @@ namespace Lucidity.Modules.GameResources
 
         public override void Initialize()
         {
-            var menu = new MenuItem("Resources"); //FIXME: Add this in the init logic???
-            
         }
     }
 }

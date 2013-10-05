@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lucidity
+namespace Lucidity.Modules.GameResources.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GameResourcePaneView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GameResourcePaneView : UserControl
     {
-        public MainWindow()
+        public GameResourcePaneView()
         {
             InitializeComponent();
         }

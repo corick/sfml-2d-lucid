@@ -96,6 +96,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\GameResources\GameResourcesModule.cs" />
+    <Compile Include="Modules\GameResources\ViewModels\BaseNodeViewModel.cs" />
+    <Compile Include="Modules\GameResources\ViewModels\FolderViewModel.cs" />
+    <Compile Include="Modules\GameResources\ViewModels\GameResourcePaneViewModel.cs" />
+    <Compile Include="Modules\GameResources\ViewModels\ResourceViewModel.cs" />
+    <Compile Include="Modules\GameResources\ViewModels\RootNodeViewModel.cs" />
+    <Compile Include="Modules\GameResources\Views\GameResourcePaneView.xaml.cs">
+      <DependentUpon>GameResourcePaneView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Init\InitModule.cs" />
     <Compile Include="Modules\Project\ProjectClosingEvent.cs" />
     <Compile Include="Modules\Project\ProjectModule.cs" />
@@ -153,8 +161,14 @@
   <ItemGroup>
     <Resource Include="todo-licenses.txt" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Modules\GameResources\Views\GameResourcePaneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\Project\Views\ProjectSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

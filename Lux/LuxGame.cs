@@ -15,12 +15,15 @@ namespace Lux
         public LuxGame()
             : base()
         {
+            //Set jsConfigPath to default of "default.properties"
         }
 
         public LuxGame(string conf)
             : this()
         {
             jsConfigPath = conf;
+
+            //TODO: Do sanity checking here; make sure we have a real cfg path.
         }
 
         //Read data from lux config.

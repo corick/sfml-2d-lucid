@@ -51,15 +51,17 @@ namespace Lucidity.Modules.Project
         {
             Launcher l = new Launcher(manager.Project); 
 
-            //Running this in a separate thread lets debugging stuff work properly,
-            //but we don't want the whole program to crash when the game crashes.
-            //Eventually we'll have a better solution for that.
-            Thread t = new Thread(new ThreadStart(l.Run));
-            t.Start();
-            while (t.IsAlive) //Freeze the UI. Hacky but whatever.
-            {
-                Thread.Sleep(1000);
-            }
+            ////Running this in a separate thread lets debugging stuff work properly,
+            ////but we don't want the whole program to crash when the game crashes.
+            ////Eventually we'll have a better solution for that.
+            //Thread t = new Thread(new ThreadStart(l.Run));
+            //t.Start();
+            //while (t.IsAlive) //Freeze the UI. Hacky but whatever.
+            //{
+            //    Thread.Sleep(1000);
+            //}
+            l.Run(); //Launch it as a program instead.
+
             yield break;
         }
 
@@ -82,7 +84,7 @@ namespace Lucidity.Modules.Project
             manager.Project = p; //Load me :)
             manager.Project.SaveToFile();
 
-            MainMenu.Refresh();
+            yield return PostLoadProject();
 
             yield break;
         }
@@ -100,7 +102,7 @@ namespace Lucidity.Modules.Project
             LucidityProject p = LucidityProject.LoadFromFile(dialog.FileName);
             manager.Project = p;
 
-            MainMenu.Refresh();
+            yield return PostLoadProject();
 
             yield break;
         }
@@ -123,6 +125,12 @@ namespace Lucidity.Modules.Project
                 yield return Show.Document(settingsViewModel);
             yield break; //TODO: Instead, focus it.
             //TODO: Make sure the title bar gets updated
+        }
+
+        private IResult PostLoadProject()
+        {
+            MainMenu.Refresh();
+            return Show.Tool(new GameResources.ViewModels.GameResourcePaneViewModel(manager));
         }
     }
 }

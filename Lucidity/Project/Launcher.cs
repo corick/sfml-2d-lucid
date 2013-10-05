@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Dynamic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-
 using LucidityCommon.Project;
 using Newtonsoft.Json;
 
@@ -32,7 +32,9 @@ namespace Lucidity.Project
 
             try
             {
-                Lux.Program.Launch(confPath);
+                // Lux.Program.Launch(confPath);
+                var p = Process.Start("Lux.exe", confPath);
+                p.WaitForExit();
             }
             finally
             {
