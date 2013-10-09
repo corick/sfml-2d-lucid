@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using Caliburn.Micro;
 
-using LucidityCommon.Project.Resources.TreeModel;
+using Lucidity.Core.Project.Resources.TreeModel;
 
 namespace Lucidity.Modules.GameResources.ViewModels
 {

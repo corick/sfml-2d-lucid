@@ -8,11 +8,12 @@ using Caliburn.Micro;
 using Gemini.Framework;
 using Gemini.Framework.Results;
 using Lucidity.Project;
+using Lucidity.Services;
 
 namespace Lucidity.Modules.Project.ViewModels
 {
     public class ProjectSettingsViewModel
-        : Document, IHandle<ProjectClosingEvent>
+        : Document, IHandle<ProjectClosingEventArgs>
     {
         private readonly ProjectManager manager;
         private readonly IEventAggregator events;
@@ -52,7 +53,7 @@ namespace Lucidity.Modules.Project.ViewModels
             manager.Project.Name = projectName;
         }
 
-        public void Handle(ProjectClosingEvent e)
+        public void Handle(ProjectClosingEventArgs e)
         {
             //FIXME: Ask if you want to save.
             TryClose();

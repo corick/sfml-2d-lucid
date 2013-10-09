@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lucid.Framework.Graphics.Sheet
+namespace Lucid.Models.Sheet
 {
     public class Frame
     {

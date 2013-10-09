@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Win32;
-
 using Caliburn.Micro;
 using Gemini.Framework;
 using Gemini.Framework.Results;
 using Gemini.Modules.MainMenu.Models;
-using Lucidity.Project;
-using LucidityCommon.Project;
 using Lucidity.Modules.Project.ViewModels;
-using System.Threading;
+using Lucidity.Project;
+using Lucidity.Services;
+using Lucidity.Core.Project;
+using Microsoft.Win32;
 
 namespace Lucidity.Modules.Project
 {
@@ -97,10 +97,16 @@ namespace Lucidity.Modules.Project
 
             //dialog.Filter = "lproject";
 
-            yield return Show.Dialog(dialog);
+            var res = Show.Dialog(dialog);
+            yield return res;
+
+            //Check if ok. FIXME
 
             LucidityProject p = LucidityProject.LoadFromFile(dialog.FileName);
             manager.Project = p;
+
+            events.Publish(new ProjectClosingEventArgs());
+            events.Publish(new ProjectOpeningEventArgs());
 
             yield return PostLoadProject();
 
@@ -115,8 +121,9 @@ namespace Lucidity.Modules.Project
 
         public IEnumerable<IResult> CloseProject()
         {
+            events.Publish(new ProjectClosingEventArgs());
             MainMenu.Refresh();
-            yield return null;
+            yield break;
         }
 
         public IEnumerable<IResult> EditSettings()

@@ -9,9 +9,10 @@ namespace Lucidity.Modules.Project
     /// <summary>
     /// Used to signal that the project is closing.
     /// </summary>
-    public class ProjectClosingEvent
+    public class ProjectClosingEventArgs
+        : EventArgs
     {
-        public ProjectClosingEvent()
+        public ProjectClosingEventArgs()
         {
         }
     }

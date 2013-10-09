@@ -7,13 +7,17 @@ using Caliburn.Micro;
 using Gemini.Framework;
 using Lucidity.Modules.Project;
 using Lucidity.Project;
-using LucidityCommon.Project.Resources.TreeModel;
+using Lucidity.Services;
+using Lucidity.Core.Project.Resources.TreeModel;
+using Gemini.Framework.Results;
 
 namespace Lucidity.Modules.GameResources.ViewModels
 {
     public class GameResourcePaneViewModel
-        : Tool, IHandle<ProjectClosingEvent>
+        : Tool, IHandle<ProjectClosingEventArgs>
     {
+        private DocumentManager documents;
+
         private RootNodeViewModel resources;
         public RootNodeViewModel Resources 
         {
@@ -25,6 +29,9 @@ namespace Lucidity.Modules.GameResources.ViewModels
         {
             this.DisplayName = "Resources";
             this.Resources = new RootNodeViewModel(project.Project.Resources);
+
+            IoC.Get<IEventAggregator>().Subscribe(this);
+            documents = IoC.Get<DocumentManager>();
         }
 
         public override Gemini.Framework.Services.PaneLocation PreferredLocation
@@ -32,9 +39,11 @@ namespace Lucidity.Modules.GameResources.ViewModels
             get { return Gemini.Framework.Services.PaneLocation.Left; }
         }
 
-        public void Handle(ProjectClosingEvent message)
+        public void Handle(ProjectClosingEventArgs message)
         {
-            throw new NotImplementedException();
+            this.CloseCommand.Execute(null);
         }
+
+
     }
 }

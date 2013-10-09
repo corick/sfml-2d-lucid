@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Gemini.Framework;
 using Gemini.Modules.MainMenu.Models;
 
@@ -14,7 +15,7 @@ namespace Lucidity.Modules.GameResources
         : ModuleBase
     {
         [Import]
-        Lucidity.Project.ProjectManager project;
+        Lucidity.Services.ProjectManager project;
 
         public override void Initialize()
         {

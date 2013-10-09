@@ -47,15 +47,16 @@ namespace Lucid.Framework.Resource
         public T Load<T>(string path)
             where T : IResource
         {
-            if (cache.IsCached(path))
+            var resolvedPath = Resolve(path);
+            if (cache.IsCached(path)) //FIXME: Cache should only care bout guid.
             {
-                return cache.Get<T>(path);
+                return cache.Get<T>(resolvedPath);
             }
             else
             {
                 IResourceReader l = readers[typeof(T)];
-                var rsc = l.LoadResource<T>(this, resources, path);
-                cache.Cache<T>(path, rsc);
+                var rsc = l.LoadResource<T>(this, resources, resolvedPath);
+                cache.Cache<T>(resolvedPath, rsc);
                 return rsc;
             }
         }
@@ -80,6 +81,16 @@ namespace Lucid.Framework.Resource
         public void Dispose() //Free each resource
         {
             cache.FreeAll(this);
+        }
+
+        private string Resolve(string path)
+        {
+            //if it starts with id:// it's an id.
+            //TODO: Fancy URI stuff
+            //FIXME: Hacky.
+            if (path.StartsWith("id://")) //FIXME: Garbagey
+                return resources.GetResourcePath(path.Replace("id://", ""));
+            else return path;
         }
     }
 }

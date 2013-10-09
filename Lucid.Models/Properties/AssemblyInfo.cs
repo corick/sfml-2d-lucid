@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lucidity.Core")]
+[assembly: AssemblyTitle("Lucid.Models")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Lucidity.Core")]
+[assembly: AssemblyProduct("Lucid.Models")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c3b32ebe-6d74-450c-8e8e-f963c60695a7")]
+[assembly: Guid("5013d10f-ba4f-4deb-b2fe-b96bd4962d08")]
 
 // Version information for an assembly consists of the following four values:
 //

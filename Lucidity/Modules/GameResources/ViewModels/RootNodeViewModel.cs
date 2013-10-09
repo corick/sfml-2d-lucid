@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LucidityCommon.Project.Resources.TreeModel;
+using Lucidity.Core.Project.Resources.TreeModel;
 
 namespace Lucidity.Modules.GameResources.ViewModels
 {

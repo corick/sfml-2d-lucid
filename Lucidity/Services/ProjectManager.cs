@@ -5,9 +5,9 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LucidityCommon.Project;
+using Lucidity.Core.Project;
 
-namespace Lucidity.Project
+namespace Lucidity.Services
 {
     /// <summary>
     /// Handles loading and saving the project.

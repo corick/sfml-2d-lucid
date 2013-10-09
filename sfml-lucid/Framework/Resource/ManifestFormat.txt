@@ -1,9 +1,9 @@
 ﻿Manifest format:
 
-file_name>type
+file_name>type>refid
 ...
 
 so like 
-textures\butt.png>Lucid.Framework.Graphics.Texture
+textures\butt.png>Lucid.Framework.Graphics.Texture>AB6DC20F-EE0F-4611-AD9A-24634918971E
 or
-sprites\butt.lsd>Lucid.Framework.Graphics.AnimatedSprite
+sprites\butt.jsheet>Lucid.Framework.Graphics.SpriteSheet>135404FD-B00B-D00D-F00F-13CDF62BF8D1

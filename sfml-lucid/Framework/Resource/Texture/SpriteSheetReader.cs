@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lucid.Framework.Graphics.Sheet;
+using Lucid.Models.Sheet;
 
 namespace Lucid.Framework.Resource.Texture
 {

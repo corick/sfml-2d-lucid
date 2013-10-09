@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using LucidityCommon.Project.Resources;
-using LucidityCommon.Project.Resources.TreeModel;
+using Lucidity.Core.Project.Resources;
+using Lucidity.Core.Project.Resources.TreeModel;
+using Lucidity.Services;
 
 namespace Lucidity.Modules.GameResources.ViewModels
 {
@@ -18,14 +19,12 @@ namespace Lucidity.Modules.GameResources.ViewModels
             set { resource.ResourceType = value; NotifyOfPropertyChange(); }
         }
 
-        private DateTime lastModified;
         public DateTime LastModified
         {
             get { return resource.LastModified; }
             set { resource.LastModified = value; NotifyOfPropertyChange(); }
         }
 
-        private string filePath;
         public string FilePath
         {
             get { return resource.FilePath; }
@@ -40,5 +39,11 @@ namespace Lucidity.Modules.GameResources.ViewModels
         public ResourceViewModel(ResourceNode node)
             : base(node)
         { }
+
+        public void HandleOpen()
+        {
+            var documents = IoC.Get<DocumentManager>();
+            var doc = documents.LoadFromFile(FilePath);
+        }
     }
 }

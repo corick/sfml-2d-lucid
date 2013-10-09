@@ -10,10 +10,12 @@ namespace Lucid.Framework.Resource
     internal class PackManifest
     {
         private Dictionary<string, Type> types;
+        private Dictionary<string, string> ids;
 
         public PackManifest()
         {
             types = new Dictionary<string, Type>();
+            ids = new Dictionary<string, string>();
         }
 
         public void ReadManifest(Stream manifestStream)
@@ -27,6 +29,7 @@ namespace Lucid.Framework.Resource
                 if (line[0] == '#') continue; //Skip comment lines.
                 string[] p = line.Split('>');
                 types.Add(p[0], Type.GetType(p[1], true, true));
+                ids.Add(p[2], p[0]);
             }
         }
 
@@ -38,6 +41,13 @@ namespace Lucid.Framework.Resource
         public Type GetFileType(string file)
         {
             return types[file];
+        }
+
+        //Gets a file by id.
+        //Assumes the "id://" has been stripped from it.
+        public string GetFileByID(string id)
+        {
+            return ids[id];
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Dynamic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using LucidityCommon.Project;
+using Lucidity.Core.Project;
 using Newtonsoft.Json;
 
 namespace Lucidity.Project

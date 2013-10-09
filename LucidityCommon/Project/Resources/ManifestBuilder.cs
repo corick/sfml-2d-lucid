@@ -4,27 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LucidityCommon.Project.Resources
+namespace Lucidity.Core.Project.Resources
 {
     internal class ManifestBuilder
     {
         private List<string> entries;
-        private LucidityCommon.Project.Resources.ResourceMapper map;
+        private Lucidity.Core.Project.Resources.ResourceMapper map;
 
         public ManifestBuilder()
         {
             entries = new List<string>();
-            map = new LucidityCommon.Project.Resources.ResourceMapper();
+            map = new Lucidity.Core.Project.Resources.ResourceMapper();
         }
 
-        public void Add(string path)
+        public void Add(string path, DesignerResource resource)
         {
-            entries.Add(path + ">" + map.Map(path));
-        }
-
-        public void Add(string path, Type type)
-        {
-            entries.Add(path + ">" + type.FullName);
+            entries.Add(path + ">" 
+                      + resource.ResourceType.FullName + ">" 
+                      + resource.ResourceGuid.ToString() + "\n");
         }
 
         public string GetManifest()

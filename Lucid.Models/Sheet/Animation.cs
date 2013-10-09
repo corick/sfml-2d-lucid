@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lucid.Framework.Graphics.Sheet
+namespace Lucid.Models.Sheet
 {
     /// <summary>
     /// A container for sprite sheet subrectangles.

@@ -93,6 +93,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Modules\GameResources\ResourceChangedEventArgs.cs" />
+    <Compile Include="Modules\Project\ProjectOpeningEventArgs.cs" />
+    <Compile Include="Modules\SpriteDocument\SpriteEditorProvider.cs" />
+    <Compile Include="Modules\SpriteDocument\ViewModels\SpriteEditorViewModel.cs" />
+    <Compile Include="Modules\SpriteDocument\Views\SpriteEditorView.xaml.cs">
+      <DependentUpon>SpriteEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DocumentManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\GameResources\GameResourcesModule.cs" />
@@ -105,14 +113,14 @@
       <DependentUpon>GameResourcePaneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Init\InitModule.cs" />
-    <Compile Include="Modules\Project\ProjectClosingEvent.cs" />
+    <Compile Include="Modules\Project\ProjectClosingEventArgs.cs" />
     <Compile Include="Modules\Project\ProjectModule.cs" />
     <Compile Include="Modules\Project\ViewModels\ProjectSettingsViewModel.cs" />
     <Compile Include="Modules\Project\Views\ProjectSettingsView.xaml.cs">
       <DependentUpon>ProjectSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Project\Launcher.cs" />
-    <Compile Include="Project\ProjectManager.cs" />
+    <Compile Include="Services\ProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -145,9 +153,13 @@
       <Project>{13dbfc87-c152-4a86-94b0-d9944beef647}</Project>
       <Name>Gemini %28ReferencedLibraries\Gemini\Gemini%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LucidityCommon\LucidityCommon.csproj">
+    <ProjectReference Include="..\Lucid.Models\Lucid.Models.csproj">
+      <Project>{206aac81-e78e-49f5-baf9-650f2e521fe1}</Project>
+      <Name>Lucid.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LucidityCommon\Lucidity.Core.csproj">
       <Project>{ed76b7a2-60b8-4ea2-bc0b-436b02029eea}</Project>
-      <Name>LucidityCommon</Name>
+      <Name>Lucidity.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lux\Lux.csproj">
       <Project>{659ddfe7-c0c7-4475-bcc5-a40787bb6eee}</Project>
@@ -170,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Project\Views\ProjectSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\SpriteDocument\Views\SpriteEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

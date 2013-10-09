@@ -20,6 +20,7 @@ namespace Lucid.Framework.Resource //TODO: Separate this into another dll.
             {
                 manifest.ReadManifest(m);
             }
+
         }
 
         /// <summary>
@@ -34,6 +35,11 @@ namespace Lucid.Framework.Resource //TODO: Separate this into another dll.
             Type fileType = manifest.GetFileType(path);
             ResourceHandle handle = new ResourceHandle(zipEntry, fileType);
             return handle;
+        }
+
+        public string GetResourcePath(string id)
+        {
+            return manifest.GetFileByID(id);
         }
 
         public Type GetResourceType(string path)

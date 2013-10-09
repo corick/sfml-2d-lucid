@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Lucid.Framework.Resource;
 
+using Lucid.Models.Sheet;
+
 namespace Lucid.Framework.Graphics.Sheet
 {
     //FIXME: Can't load the same sheet multiple times, the cached version will be the one loaded,

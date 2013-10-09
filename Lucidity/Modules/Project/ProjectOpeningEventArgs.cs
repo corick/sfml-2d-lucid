@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lucid.Framework.Resource.ScreenDesigner
+namespace Lucidity.Modules.Project
 {
-    class ScreenDefinition
+    public class ProjectOpeningEventArgs
+        : EventArgs
     {
     }
 }

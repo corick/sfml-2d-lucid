@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Lucid.Models.Sheet;
+
 namespace Lucid.Framework.Graphics.Sheet
 {
     public class Animator
