@@ -9,6 +9,12 @@ namespace Lucid.Models.Scene.SceneObject
 {
     public abstract class SceneObjectBase
     {
+        public string DisplayName
+        {
+            get;
+            set;
+        }
+
         public Vector Position
         {
             get;

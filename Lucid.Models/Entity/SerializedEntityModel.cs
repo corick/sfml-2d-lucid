@@ -18,7 +18,7 @@ namespace Lucid.Models.Entity
         : SceneObjectBase
     {
         public List<Type> Components;
-        public List<Script.ScriptModel> Scripts; 
+        public List<Script.ScriptModel> Scripts; //ScriptComponent Instaed? 
 
         public dynamic PropertyTable
         {
@@ -33,13 +33,6 @@ namespace Lucid.Models.Entity
         {
             Components = new List<Type>();
             Scripts = new List<Script.ScriptModel>();
-        }
-
-        /// <summary>
-        /// Adds the default values for missing propertytable properties.
-        /// </summary>
-        public void AddDefaults()
-        {
         }
 
         //TODO: From Template (.entity-template file)

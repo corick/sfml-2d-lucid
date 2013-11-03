@@ -62,8 +62,17 @@
     <Compile Include="Mocking\MockInputProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestFrameworkGame.cs" />
+    <Compile Include="TransformTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lucid.Models\Lucid.Models.csproj">
+      <Project>{206aac81-e78e-49f5-baf9-650f2e521fe1}</Project>
+      <Name>Lucid.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lucid.Types\Lucid.Types.csproj">
+      <Project>{bdc5349d-5fc0-49b7-bb98-69c48798a669}</Project>
+      <Name>Lucid.Types</Name>
+    </ProjectReference>
     <ProjectReference Include="..\sfml-lucid\Lucid.csproj">
       <Project>{90ca7b1d-3600-4c49-b699-da2428872cf5}</Project>
       <Name>Lucid</Name>

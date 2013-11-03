@@ -9,6 +9,7 @@ using Lucid.Framework.Graphics.Sheet;
 
 namespace Lucid.Framework.Entities.Components
 {
+    [DesignerName("Sprite")]
     [ComponentProperty("ResourcePath", typeof(string), "textures/missing.png")]
     public class SpriteComponent
         : Component

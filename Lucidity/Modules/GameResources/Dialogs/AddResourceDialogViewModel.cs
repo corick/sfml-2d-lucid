@@ -12,15 +12,24 @@ namespace Lucidity.Modules.GameResources.Dialogs
     public class AddResourceDialogViewModel
         : PropertyChangedBase, IWindow
     {
-        public DesignerResource Resource
+        private string resourceName;
+        public string ResourceName
         {
-            get;
-            private set;
+            get { return resourceName; }
+            set { resourceName = value; NotifyOfPropertyChange(); }
+        }
+
+        private Type resourceType;
+        public Type ResourceType
+        {
+            get { return resourceType; }
+            set { resourceType = value; NotifyOfPropertyChange(); }
         }
 
         public AddResourceDialogViewModel()
         {
-            Resource = new DesignerResource("asdfdf", typeof(string));
+            ResourceName = "???";
+            resourceType = typeof(string);
         }
 
         public IEnumerable<IResult> OkClicked()

@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Lucidity.Modules.GameResources.Views.GameResourcePaneView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Lucidity.Modules.GameResources.ViewModels"
+             xmlns:cm="http://www.caliburnproject.org"
+             mc:Ignorable="d">
+    
+    <DockPanel>
+        <!-- FIXME: We need a "Project" root node. -->
+        <TreeView ItemsSource="{Binding Path=RootSource}" > 
+            <!-- Referenced CShell -->
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type vm:RootNodeViewModel}"
+                                          ItemsSource="{Binding Children}">
+                    <StackPanel DataContext="{Binding}">
+                        <StackPanel.ContextMenu>
+                            <ContextMenu>
+                                <!-- Uhh not sure about this. -->
+                                <MenuItem cm:Message.Attach="[Event Click] = [Action AddResource]"
+                                          Header="Add Resource" />
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://application:,,,/Lucidity;component/Icons/filecabinet.png" 
+                                   Width="16" Height="16" SnapsToDevicePixels="True" />
+                            <TextBlock Text="{Binding DisplayName}" Margin="2" />
+                        </StackPanel>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                
+                
+                <HierarchicalDataTemplate DataType="{x:Type vm:FolderViewModel}"
+                                          ItemsSource="{Binding Children}">
+                    <StackPanel DataContext="{Binding}">
+                        <StackPanel.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Add Resource"
+                                          cm:Message.Attach="[Event Click] = [Action AddResource($dataContext)]" />
+                                <MenuItem Header="Delete Folder"
+                                          cm:Message.Attach="[Event Click] = [Action DeleteFolder($dataContext)]" />
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://application:,,,/Lucidity;component/Icons/Folder.png" 
+                                   Width="16" Height="16" SnapsToDevicePixels="True"/>
+                            <TextBlock Text="{Binding DisplayName}" Margin="2"/>
+                        </StackPanel>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                
+                <!-- Terminal resource node.-->
+                <HierarchicalDataTemplate DataType="{x:Type vm:ResourceViewModel}" >
+                    <StackPanel DataContext="{Binding}">
+                        <StackPanel.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Add Resource" 
+                                          cm:Message.Attach="[Event Click] = [Action AddResource]">
+                                    <MenuItem.Icon>
+                                        <Image Source="pack://application:,,,/Lucidity;component/Icons/NewDocument_32x32.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Open" 
+                                          cm:Message.Attach="[Event Click] = [Action HandleOpen()]"/>
+                                <MenuItem Header="Remove Resource"
+                                          cm:Message.Attach="[Event Click] = [Action DeleteResource]" />
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://application:,,,/Lucidity;component/Icons/Page.png" 
+                                   Width="16" Height="16" SnapsToDevicePixels="True"/>
+                            <TextBlock Text="{Binding DisplayName}" Margin="2"/>
+                        </StackPanel>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+        </DockPanel>
+</UserControl>

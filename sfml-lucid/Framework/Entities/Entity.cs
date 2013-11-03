@@ -40,6 +40,12 @@ namespace Lucid.Framework.Entities
             private set;
         }
 
+        public dynamic Properties
+        {
+            get;
+            private set;
+        }
+
         public Entity(EntityManager manager)
         {
             Manager = manager;
@@ -48,6 +54,8 @@ namespace Lucid.Framework.Entities
             RectSize = new System.Drawing.Size(0, 0);
 
             Components = new List<Component>();
+
+            Properties = new DynamicProperties();
 
             ID = manager.NextID();
         }

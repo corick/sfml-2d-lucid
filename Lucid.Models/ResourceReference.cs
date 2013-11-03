@@ -8,6 +8,10 @@ using Newtonsoft.Json;
 
 namespace Lucid.Models
 {
+
+    /// <summary>
+    /// A reference to a resource, by guid. 
+    /// </summary>
     public class ResourceReference
     {
         [JsonProperty]

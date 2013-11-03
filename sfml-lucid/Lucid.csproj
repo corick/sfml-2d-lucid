@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Framework\Config.cs" />
     <Compile Include="Framework\Debug.cs" />
+    <Compile Include="Framework\DesignerNameAttribute.cs" />
     <Compile Include="Framework\DynamicProperties.cs" />
     <Compile Include="Framework\Entities\Components\Component.cs" />
     <Compile Include="Framework\Entities\Components\ComponentList.cs" />

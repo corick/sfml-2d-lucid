@@ -18,10 +18,9 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0" Grid.Row="0">Resource</Label>
-        <TextBox Grid.Row ="0" Grid.Column="1" IsEnabled="False" Text="not bound" />
-        <Button Grid.Row="0" Grid.Column="2">Load</Button>
+        <TextBox Grid.Row ="0" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="False" Text="{Binding ResourceName}" />
         <Label Grid.Row ="1" Grid.Column="0">ResourceType</Label>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="not bound" />
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ResourceType}" />
         <Button Grid.Row="2" Grid.Column="1">OK</Button>
         <Button Grid.Row="2" Grid.Column="2">Cancel</Button>
     </Grid>

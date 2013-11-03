@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Lucidity.Modules.Project.Views.ProjectSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Lucidity.Modules.Project.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <TextBox Name="ProjectName" Margin="10,10,10,265" Width="280" Height="25" />
+        <Button Name="SaveSettings" Content="Save" Margin="210,40,10,235" Width="80" Height="25" />
+    </Grid>
+</UserControl>

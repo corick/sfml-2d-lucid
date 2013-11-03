@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lucid.Framework.Entities.Components
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple=true, Inherited=true)]
     public class ComponentPropertyAttribute
         : Attribute

@@ -1,4 +1,5 @@
 ﻿
+using System;
 namespace Lucid.Types
 {
     public struct Vector
@@ -28,6 +29,31 @@ namespace Lucid.Types
             get { return new Vector(0, 0); }
         }
 
-        //TODO: Dotprod, etc.
+        public float Dot(Vector other)
+        {
+            return (this.X * other.X) + (this.Y * other.Y);
+        }
+
+        public float Length()
+        {
+            return (float)Math.Sqrt(Math.Pow(this.X, 2) + Math.Pow(this.Y, 2));
+        }
+
+        public static Vector operator +(Vector v1, Vector v2)
+        {
+            return new Vector(v1.X + v2.X, v1.Y + v2.Y);
+        }
+        
+        public static Vector operator -(Vector v1, Vector v2)
+        {
+            return new Vector(v1.X - v2.X, v1.Y - v2.Y);
+        }
+
+        public static Vector operator -(Vector v1)
+        {
+            return new Vector(-v1.X, -v1.Y);
+        }
+
+        //TODO: Lerps and stuff???
     }
 }
