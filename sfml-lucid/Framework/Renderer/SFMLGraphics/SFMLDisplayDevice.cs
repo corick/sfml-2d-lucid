@@ -1,8 +1,13 @@
-﻿using SFML.Graphics;
+﻿using System.Collections.Generic;
 using System.Drawing;
+using Lucid.Types;
+using SFML.Graphics;
+using SFML.Window;
+using LucidPrimitive = Lucid.Framework.Graphics.PrimitiveType;
 using LucidTexture = Lucid.Framework.Graphics.Texture;
 using SDColor = System.Drawing.Color;
-using Lucid.Types;
+using SFColor = SFML.Graphics.Color;
+using SFPrimitive = SFML.Graphics.PrimitiveType;
 
 namespace Lucid.Framework.Renderer.SFMLGraphics
 {
@@ -53,15 +58,42 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             window.Draw(sprite);
         }
 
+        public void DrawPrimitives(LucidPrimitive type, List<Vector> vertices, SDColor color)
+        { //Assume points in screen space until later.
+            SFColor sfcolor = new SFColor(color.R, color.G, color.B, color.A);
+            VertexArray v = new VertexArray(SFPrimitive.Lines, (uint)vertices.Count);
+            foreach (var vertex in vertices)
+            {
+                var sfvec2 = new Vector2f(vertex.X, vertex.Y);
+                var sfvertex = new Vertex(sfvec2, sfcolor);
+            }
+            v.Draw(window, RenderStates.Default);
+        }
 
         SFML.Graphics.Font defaultFont = new SFML.Graphics.Font("segoeui-mono.ttf");
         public void DrawText(string text, object font, Vector position, SDColor color)
         {
             Text drawObj = new Text(text, defaultFont, 16);
+            //FIXME: Creates Garbage each frame!!!
             drawObj.Position = new SFML.Window.Vector2f(position.X, position.Y);
-            drawObj.Color = SFML.Graphics.Color.White; //FIXME: As above.
+            drawObj.Color = SFColor.White; //FIXME: As above.
 
             window.Draw(drawObj);
+        }
+
+
+        public void DrawTexture(LucidTexture texture, Types.Transform transform, Rectangle source, SDColor color)
+        {
+            Texture sfTexture = texture.TextureData as Texture;
+            sprite.Texture = sfTexture;
+            sprite.TextureRect = new IntRect(source.Left, source.Top, source.Width, source.Height);
+            sprite.Position = new Vector2f(transform.WorldPosition.X, transform.WorldPosition.Y);
+            sprite.Origin = new Vector2f(transform.Origin.X, transform.Origin.Y);
+            sprite.Rotation = transform.AbsoluteRotation;
+            sprite.Scale = new Vector2f(transform.AbsoluteScale.X, transform.AbsoluteScale.Y);
+            sprite.Color = new SFColor(color.R, color.G, color.B, color.A);
+
+            window.Draw(sprite);
         }
     }
 }

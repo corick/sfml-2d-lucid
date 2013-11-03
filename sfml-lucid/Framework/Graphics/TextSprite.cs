@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lucid.Types;
 
 namespace Lucid.Framework.Graphics
 {
@@ -29,13 +30,13 @@ namespace Lucid.Framework.Graphics
             set;
         }
 
-        public IPositionComponent Position
+        public Transform Position
         {
             get;
             set;
         }
 
-        public TextSprite(string text, IPositionComponent position, int depth = 0, bool visible=true)
+        public TextSprite(string text, Transform position, int depth = 0, bool visible=true)
         {
             Text = text;
             Position = position;
@@ -50,7 +51,7 @@ namespace Lucid.Framework.Graphics
 
         public void Draw(Graphics2D display)
         {
-            display.DrawText(Text, null, Position.Position);
+            display.DrawText(Text, null, Position.WorldPosition);
         }
     }
 }

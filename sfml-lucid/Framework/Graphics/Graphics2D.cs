@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using Lucid.Types;
+using System.Collections.Generic;
 
 namespace Lucid.Framework.Graphics
 {
@@ -30,7 +31,8 @@ namespace Lucid.Framework.Graphics
             Viewport = new Rectangle(0, 0, device.ViewportSize.Width, device.ViewportSize.Height);
         }
         
-
+        //FIXME: Update to use Lucid.Types.
+        //TODO: Default value for Camera.
         public void DrawTexture(Texture texture, Vector position, Size size, Rectangle sourceRect, Camera camera, Color color)
         {
             Rectangle destRect;
@@ -52,10 +54,29 @@ namespace Lucid.Framework.Graphics
             } 
         }
 
-        //TODO: does basically the same as DrawIndexedPrimitives, gl
-        public void DrawPrimitiveList(PrimitiveType type)
+        //FIXME: Camera stuff.
+        public void DrawTexture(Texture texture, Transform transform, Rectangle source, Camera camera, Color color)
         {
-            throw new NotImplementedException();
+            if (camera == null)
+            {
+                //FIXME: Cull offscreen objects.
+                device.DrawTexture(texture, transform, source, color);
+            }
+            else
+            {
+                //FIXME: !!! Garbage!
+                Transform tx = new Transform(transform, position:-camera.Offset, 
+                                             scale: new Vector(1, 1), 
+                                             origin: Vector.Zero,
+                                             rotation: 0f);
+                device.DrawTexture(texture, tx, source, color);
+            }
+        }
+
+        //TODO: does basically the same as DrawIndexedPrimitives, gl
+        public void DrawPrimitiveList(PrimitiveType type, List<Vector> vertices, Color color)
+        {
+            device.DrawPrimitives(type, vertices, color);
         }
 
         public void DrawText(string text, object font, Vector position) //FIXME: Color  too!@

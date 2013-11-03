@@ -12,20 +12,19 @@ using Lucid.Types;
 namespace Lucid.Framework.Entities
 {
     public abstract class Entity
-        :IPositionComponent
+        : Transform
     {
         protected List<Component> Components;
 
-        public System.Drawing.Size RectSize
+        public BoundingBox Bounds
         {
             get;
             set;
         }
 
-        public Vector Position
+        public Transform Transform
         {
-            get;
-            set;
+            get { return Bounds.Transform; }
         }
 
         public int ID
@@ -46,19 +45,18 @@ namespace Lucid.Framework.Entities
             private set;
         }
 
-        public Entity(EntityManager manager)
+        public Entity(EntityManager manager, Entity parent = null)
+            : base(parent)
         {
             Manager = manager;
-
-            Position = Vector.Zero;
-            RectSize = new System.Drawing.Size(0, 0);
-
             Components = new List<Component>();
-
             Properties = new DynamicProperties();
-
             ID = manager.NextID();
+
+            Bounds = new BoundingBox(this);
         }
+
+        //TODO: Deserialization stuff??
 
         protected abstract void InitializeComponents();
 

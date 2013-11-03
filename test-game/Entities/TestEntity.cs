@@ -20,7 +20,6 @@ namespace TestGame.Entities
             SpriteComponent c = new SpriteComponent(this, @"spritesheet/kit.bss");
             SimpleMoveCopmonent c2 = new SimpleMoveCopmonent(this);
             var c3 = new TextTestComponent(this);
-
             Components.Add(c);
             Components.Add(c2);
             Components.Add(item: c3);

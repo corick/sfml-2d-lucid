@@ -1,6 +1,7 @@
-﻿
-using Lucid.Framework.Graphics;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using Lucid.Framework.Graphics;
 using Lucid.Types;
 
 namespace Lucid.Framework.Renderer
@@ -26,9 +27,13 @@ namespace Lucid.Framework.Renderer
             get;
         }
 
+        //TODO: DestScreen should be replaced with Vector, Scale??
         void DrawTexture(Texture texture, Rectangle destScreen, Rectangle source, Color color);
 
-        //DrawPrimitives (type, vertices)
+        //FIXME: Remove above DrawTexture...
+        void DrawTexture(Texture texture, Transform transform, Rectangle source, Color color);
+
+        void DrawPrimitives(PrimitiveType type, List<Vector> vertices, Color color);
 
         void DrawText(string text, object font, Vector position, Color color);
     }

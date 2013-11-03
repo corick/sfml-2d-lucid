@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Lucid.Framework.Graphics.Sheet;
+using Lucid.Types;
 
 //FIXME: minor: don't use SubRectangle, instead expose the Size in the sc so we don't call the getter.
 namespace Lucid.Framework.Graphics
@@ -30,9 +31,9 @@ namespace Lucid.Framework.Graphics
         }
 
         /// <summary>
-        /// The absolute (non-camera-xlated) position of this sprite.
+        /// The boundingbox of this sprite.
         /// </summary>
-        public IPositionComponent Position
+        public BoundingBox Bounds
         {
             get;
             private set;
@@ -51,24 +52,23 @@ namespace Lucid.Framework.Graphics
         Animator animator;
         
         //Don't call me usually. 
-        public Sprite(Texture texture, string texturePath, IPositionComponent position, int depth = 1) 
+        public Sprite(Texture texture, string texturePath, BoundingBox bounds, int depth = 1) 
         {
             Visible = true;
             this.depth = depth;
 
             spriteSheet = new SpriteSheet(texture, texturePath);
             animator = spriteSheet.CreateAnimator();
-
-            this.Position = position;
+            this.Bounds = bounds;
         }
 
-        public Sprite(SpriteSheet sheet, IPositionComponent position, int depth = 1)
+        public Sprite(SpriteSheet sheet, BoundingBox bounds, int depth = 1)
         {
             Visible = true;
             this.depth = depth;
 
             this.spriteSheet = sheet;
-            this.Position = position;
+            this.Bounds = bounds;
 
             animator = spriteSheet.CreateAnimator();
             animator.SetAnimation("hit");
@@ -76,19 +76,19 @@ namespace Lucid.Framework.Graphics
 
         public virtual void Initialize()
         {
-            if (Position.RectSize.Width  != animator.SubRectangle.Width
-             || Position.RectSize.Height != animator.SubRectangle.Height)
+            if (Bounds.Width != animator.SubRectangle.Width
+             || Bounds.Height != animator.SubRectangle.Height)
             {
                 //Set the size to the texture's size.
-                Size s = new Size(animator.SubRectangle.Width, animator.SubRectangle.Height);
-                Position.RectSize = s;
+                Bounds.Width = animator.SubRectangle.Width;
+                Bounds.Height = animator.SubRectangle.Height;
             }
         }
 
         public void Draw(Graphics2D gfx)
         {
             //FIXME: Color, etc render property stuff.
-            gfx.DrawTexture(spriteSheet.SheetTexture, Position.Position, Position.RectSize, 
+            gfx.DrawTexture(spriteSheet.SheetTexture, Bounds.Transform.WorldPosition, new Size((int)Bounds.Width, (int)Bounds.Height), 
                             animator.SubRectangle, Camera, Color.White);
 
             //FIXME: We just want to see if this works...

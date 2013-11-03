@@ -46,11 +46,11 @@ namespace Lucid.Framework.Entities.Components
             resourceType = resources.GetResourceType(resPath);
             if (resourceType == typeof(SpriteSheet))
             {
-                sprite = new Sprite(resources.Load<SpriteSheet>(resPath), Parent);
+                sprite = new Sprite(resources.Load<SpriteSheet>(resPath), Parent.Bounds);
             }
             else if (resourceType == typeof(Texture))
             {
-                sprite = new Sprite(resources.Load<Texture>(resPath), resPath, Parent);
+                sprite = new Sprite(resources.Load<Texture>(resPath), resPath, Parent.Bounds);
             }
             else throw new NotImplementedException("herp");
         }

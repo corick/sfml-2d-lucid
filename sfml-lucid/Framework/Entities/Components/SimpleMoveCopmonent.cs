@@ -25,12 +25,12 @@ namespace Lucid.Framework.Entities.Components
         int xmod = 5;
         private void OnUpdate(object sender, UpdateEventArgs e)
         {
-            if (Parent.Position.X > 800) xmod = -5;
-            if (Parent.Position.X < 0) xmod = 5;
+            if (Parent.LocalPosition.X > 800) xmod = -5;
+            if (Parent.LocalPosition.X < 0) xmod = 5;
 
-            Vector newPos = Parent.Position;
+            Vector newPos = Parent.LocalPosition;
             newPos.X += xmod;
-            Parent.Position = newPos;
+            Parent.LocalPosition = newPos;
         }
 
         public override void Destroy()
