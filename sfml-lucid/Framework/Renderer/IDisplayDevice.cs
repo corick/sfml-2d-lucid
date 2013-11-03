@@ -1,6 +1,7 @@
 ﻿
 using Lucid.Framework.Graphics;
 using System.Drawing;
+using Lucid.Types;
 
 namespace Lucid.Framework.Renderer
 {
@@ -29,6 +30,6 @@ namespace Lucid.Framework.Renderer
 
         //DrawPrimitives (type, vertices)
 
-        //DrawText
+        void DrawText(string text, object font, Vector position, Color color);
     }
 }

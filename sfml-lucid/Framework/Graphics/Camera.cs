@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Lucid.Types;
+
 namespace Lucid.Framework.Graphics
 {
     public class Camera

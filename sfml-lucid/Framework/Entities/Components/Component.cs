@@ -45,6 +45,12 @@ namespace Lucid.Framework.Entities.Components
         public virtual void DisplayAttach(GraphicsContainer children) { }
 
         /// <summary>
+        /// Removes any of our attached graphics from the screen's display node.
+        /// </summary>
+        /// <param name="children">The display node to remove our graphics from.</param>
+        public virtual void DisplayRemove(GraphicsContainer children) { }
+
+        /// <summary>
         /// Loads any resources from the Resource Manager.
         /// </summary>
         /// <param name="rsc">Resource Manager to load from</param>

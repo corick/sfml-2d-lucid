@@ -16,13 +16,16 @@ namespace Lux
             : base()
         {
             //Set jsConfigPath to default of "default.properties"
+#if DEBUG
+            //if (System.Environment.GetCommandLineArgs().Contains<string>("-debug-attach"))
+            System.Diagnostics.Debugger.Launch(); //better yet, read from properties.
+#endif 
         }
 
         public LuxGame(string conf)
             : this()
         {
             jsConfigPath = conf;
-
             //TODO: Do sanity checking here; make sure we have a real cfg path.
         }
 

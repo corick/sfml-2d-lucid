@@ -9,6 +9,7 @@ using Lucid.Framework.Graphics.Sheet;
 
 namespace Lucid.Framework.Entities.Components
 {
+    [ComponentProperty("ResourcePath", typeof(string), "textures/missing.png")]
     public class SpriteComponent
         : Component
     {
@@ -32,6 +33,11 @@ namespace Lucid.Framework.Entities.Components
         public override void DisplayAttach(GraphicsContainer parent)
         {
             parent.Add(sprite);
+        }
+
+        public override void DisplayRemove(GraphicsContainer parent)
+        {
+            parent.Remove(sprite);
         }
 
         public override void LoadResources(Resource.ResourceManager resources)

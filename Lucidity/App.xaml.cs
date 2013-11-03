@@ -13,5 +13,11 @@ namespace Lucidity
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnActivated(EventArgs e)
+        {
+            //FIXME: Can't figure out how to maximize better, since 
+            //I can't be arsed to look up how this is done in xaml.
+            this.MainWindow.WindowState = WindowState.Maximized;
+        }
     }
 }

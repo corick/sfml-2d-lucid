@@ -93,8 +93,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Modules\GameResources\Dialogs\AddResourceDialogView.xaml.cs">
+      <DependentUpon>AddResourceDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\GameResources\Dialogs\AddResourceDialogViewModel.cs" />
     <Compile Include="Modules\GameResources\ResourceChangedEventArgs.cs" />
     <Compile Include="Modules\Project\ProjectOpeningEventArgs.cs" />
+    <Compile Include="Modules\SceneEditor\ViewModels\SceneViewModel.cs" />
+    <Compile Include="Modules\SceneEditor\Views\SceneView.xaml.cs">
+      <DependentUpon>SceneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SceneEditor\SceneEditorModule.cs" />
+    <Compile Include="Modules\SceneEditor\SceneEditorProvider.cs" />
+    <Compile Include="Modules\SceneEditor\ViewModels\SceneEditorViewModel.cs" />
+    <Compile Include="Modules\SceneEditor\Views\SceneEditorView.xaml.cs">
+      <DependentUpon>SceneEditorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\SpriteDocument\SpriteEditorProvider.cs" />
     <Compile Include="Modules\SpriteDocument\ViewModels\SpriteEditorViewModel.cs" />
     <Compile Include="Modules\SpriteDocument\Views\SpriteEditorView.xaml.cs">
@@ -157,6 +171,10 @@
       <Project>{206aac81-e78e-49f5-baf9-650f2e521fe1}</Project>
       <Name>Lucid.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lucid.Types\Lucid.Types.csproj">
+      <Project>{bdc5349d-5fc0-49b7-bb98-69c48798a669}</Project>
+      <Name>Lucid.Types</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LucidityCommon\Lucidity.Core.csproj">
       <Project>{ed76b7a2-60b8-4ea2-bc0b-436b02029eea}</Project>
       <Name>Lucidity.Core</Name>
@@ -174,9 +192,14 @@
     <Resource Include="todo-licenses.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Modules\PropertyBrowser\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Modules\GameResources\Dialogs\AddResourceDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\GameResources\Views\GameResourcePaneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,10 +208,44 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Modules\SceneEditor\Views\SceneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\SceneEditor\Views\SceneEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\SpriteDocument\Views\SpriteEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\NewDocuments_32x32.png" />
+    <Resource Include="Icons\NewDocument_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\DeleteHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\base_cog_32.png" />
+    <Resource Include="Icons\base_cylinder_32.png" />
+    <Resource Include="Icons\base_floppydisk_32.png" />
+    <Resource Include="Icons\base_gauge.png" />
+    <Resource Include="Icons\base_scroll_32.png" />
+    <Resource Include="Icons\base_server.png" />
+    <Resource Include="Icons\filecabinet.png" />
+    <Resource Include="Icons\Flag.png" />
+    <Resource Include="Icons\Function_32.png" />
+    <Resource Include="Icons\image.png" />
+    <Resource Include="Icons\pencil_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

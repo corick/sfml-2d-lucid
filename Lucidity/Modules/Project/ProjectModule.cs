@@ -36,7 +36,7 @@ namespace Lucidity.Modules.Project
             fileMenu.Children.Insert(1, new MenuItem("Open Project", OpenProject));
             fileMenu.Children.Insert(2, new MenuItem("Save Project", SaveProject, () => manager.IsProjectLoaded)); //TODO: Probably get rid of these, and just update it auto.
             fileMenu.Children.Insert(3, new MenuItem("Close Project", CloseProject, () => manager.IsProjectLoaded));
-            fileMenu.Children.Insert(4, new MenuItemSeparator());
+            //fileMenu.Children.Insert(4, new MenuItemSeparator());
 
             var projectMenu = MainMenu.First(x => x.Name == "Project");
             projectMenu.Add(new MenuItem("Test Game", RunGame, () => manager.IsProjectLoaded),
@@ -84,8 +84,9 @@ namespace Lucidity.Modules.Project
             manager.Project = p; //Load me :)
             manager.Project.SaveToFile();
 
-            yield return PostLoadProject();
+            events.Publish(new ProjectOpeningEventArgs(p));
 
+            PostLoadProject();
             yield break;
         }
 
@@ -105,10 +106,13 @@ namespace Lucidity.Modules.Project
             LucidityProject p = LucidityProject.LoadFromFile(dialog.FileName);
             manager.Project = p;
 
-            events.Publish(new ProjectClosingEventArgs());
-            events.Publish(new ProjectOpeningEventArgs());
+            p.Resources.ReparentChildren(); //FIXME: This is really hacky but necessary for now, 
+                                            //Since it doesn't get reparented in the deserialize.
 
-            yield return PostLoadProject();
+            events.Publish(new ProjectClosingEventArgs());
+            events.Publish(new ProjectOpeningEventArgs(p));
+
+            PostLoadProject();
 
             yield break;
         }
@@ -134,10 +138,12 @@ namespace Lucidity.Modules.Project
             //TODO: Make sure the title bar gets updated
         }
 
-        private IResult PostLoadProject()
+        private void PostLoadProject() //FIXME: Should be IHandle<ProjectOpeningEventArgs>.
         {
             MainMenu.Refresh();
-            return Show.Tool(new GameResources.ViewModels.GameResourcePaneViewModel(manager));
+            //manager.Project.Resources.ReparentChildren();
+            //This always exists.
+            //return Show.Tool(new GameResources.ViewModels.GameResourcePaneViewModel(manager));
         }
     }
 }

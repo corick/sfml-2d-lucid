@@ -16,8 +16,8 @@ namespace Lucidity.Modules.SpriteDocument
     {
         public bool Handles(string path)
         {
-            return Path.GetExtension(path)
-                       .Equals(".jsheet", StringComparison.CurrentCultureIgnoreCase);
+            return Path.GetExtension(path) //FIXME: This.
+                       .Equals(".bss", StringComparison.CurrentCultureIgnoreCase);
         }
 
         public Gemini.Framework.IDocument Create(string path)

@@ -2,6 +2,7 @@
 using System.Drawing;
 using LucidTexture = Lucid.Framework.Graphics.Texture;
 using SDColor = System.Drawing.Color;
+using Lucid.Types;
 
 namespace Lucid.Framework.Renderer.SFMLGraphics
 {
@@ -50,6 +51,17 @@ namespace Lucid.Framework.Renderer.SFMLGraphics
             sprite.Position = new SFML.Window.Vector2f(destRect.X, destRect.Y);
 
             window.Draw(sprite);
+        }
+
+
+        SFML.Graphics.Font defaultFont = new SFML.Graphics.Font("segoeui-mono.ttf");
+        public void DrawText(string text, object font, Vector position, SDColor color)
+        {
+            Text drawObj = new Text(text, defaultFont, 16);
+            drawObj.Position = new SFML.Window.Vector2f(position.X, position.Y);
+            drawObj.Color = SFML.Graphics.Color.White; //FIXME: As above.
+
+            window.Draw(drawObj);
         }
     }
 }

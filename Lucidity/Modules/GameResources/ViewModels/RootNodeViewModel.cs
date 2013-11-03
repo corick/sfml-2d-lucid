@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caliburn.Micro;
 using Lucidity.Core.Project.Resources.TreeModel;
 
 namespace Lucidity.Modules.GameResources.ViewModels
@@ -14,7 +15,7 @@ namespace Lucidity.Modules.GameResources.ViewModels
         {
             get
             {
-                return "ResourcesRootNode";
+                return "Resources";
             }
             set
             {
@@ -23,9 +24,10 @@ namespace Lucidity.Modules.GameResources.ViewModels
         }
 
         public RootNodeViewModel(ResourceTree tree)
-            : base(tree)
+            : base(null, tree)
         {
             
         }
+
     }
 }

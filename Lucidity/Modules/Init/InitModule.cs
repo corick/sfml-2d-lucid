@@ -23,12 +23,19 @@ namespace Lucidity.Modules.Init
             }
         }
 
-        public override void Initialize()
+        public override void PreInitialize()
         {
             MainWindow.Title = "Lucidity Editor -- No Project Loaded";
 
             MainMenu.Insert(1, new MenuItem("Edit"));
             MainMenu.Add(new MenuItem("Project"));
         }
+
+        public override void PostInitialize()
+        {
+            var menu = MainMenu.First(m => m.Name == "File").Children;
+            menu.Remove(menu.First(m => m.Name == "Open"));
+        }
+
     }
 }

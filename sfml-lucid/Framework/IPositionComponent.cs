@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using Lucid.Types;
 
 namespace Lucid.Framework
 {

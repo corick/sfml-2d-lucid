@@ -1,2 +1,4 @@
 ﻿sfml
 json.net
+
+fontpack thing remember to remove the ttf from the project.

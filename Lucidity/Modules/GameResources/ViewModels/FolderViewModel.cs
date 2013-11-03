@@ -20,24 +20,27 @@ namespace Lucidity.Modules.GameResources.ViewModels
             set; //FIXME: Private set.
         }
 
-        public FolderViewModel(FolderNode thisNode)
-            : base(thisNode)
+        public FolderViewModel(BaseNodeViewModel parent, FolderNode thisNode)
+            : base(parent, thisNode)
         {
             Children = new BindableCollection<BaseNodeViewModel>();
-            AttachChildren();
+            RefreshChildren();
         }
+
+        //Reparent
 
         /// <summary>
         /// Attach each res/thing subnode to this one??
         /// </summary>
-        protected void AttachChildren()
+        public void RefreshChildren()
         {
-            foreach (var n in (node as FolderNode).Children)
+            Children.Clear();
+            foreach (var n in (Node as FolderNode).Children)
             {
                 if (n is FolderNode)
-                    Children.Add(new FolderViewModel(n as FolderNode));
+                    Children.Add(new FolderViewModel(this, n as FolderNode));
                 else if (n is ResourceNode)
-                    Children.Add(new ResourceViewModel(n as ResourceNode));
+                    Children.Add(new ResourceViewModel(this, n as ResourceNode));
                 else throw new InvalidOperationException("BUG: Wrong type of node!");
             }
         }

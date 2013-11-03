@@ -11,9 +11,16 @@ using Lucidity.Core.Project.Resources.TreeModel;
 namespace Lucidity.Modules.GameResources.ViewModels
 {
     public abstract class BaseNodeViewModel 
-        : PropertyChangedBase, IHaveDisplayName
+        : PropertyChangedBase, IHaveDisplayName, IChild<BaseNodeViewModel>
     {
-        protected BaseNode node
+        private BaseNodeViewModel parent;
+        public BaseNodeViewModel Parent
+        {
+            get { return parent; }
+            set { parent = value; NotifyOfPropertyChange(); }
+        }
+
+        public BaseNode Node
         {
             get;
             private set;
@@ -21,15 +28,28 @@ namespace Lucidity.Modules.GameResources.ViewModels
 
         public virtual string DisplayName
         {
-            get { return node.DisplayName; }
-            set { node.DisplayName = value; NotifyOfPropertyChange(); }
+            get { return Node.DisplayName; }
+            set { Node.DisplayName = value; NotifyOfPropertyChange(); }
         }
 
-        public BaseNodeViewModel(BaseNode node)
+        public BaseNodeViewModel(BaseNodeViewModel parent, BaseNode node)
         {
-            this.node = node;
+            this.Node = node;
+            this.Parent = parent;
         }
 
         //Baleet and stuff...
+
+        object IChild.Parent
+        {
+            get
+            {
+                return Parent;
+            }
+            set
+            {
+                Parent = value as BaseNodeViewModel;
+            }
+        }
     }
 }

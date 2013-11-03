@@ -34,6 +34,7 @@ namespace Lucidity.Project
             {
                 // Lux.Program.Launch(confPath);
                 var p = Process.Start("Lux.exe", confPath);
+
                 p.WaitForExit();
             }
             finally

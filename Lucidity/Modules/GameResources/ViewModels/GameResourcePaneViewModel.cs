@@ -10,28 +10,51 @@ using Lucidity.Project;
 using Lucidity.Services;
 using Lucidity.Core.Project.Resources.TreeModel;
 using Gemini.Framework.Results;
+using System.ComponentModel.Composition;
 
 namespace Lucidity.Modules.GameResources.ViewModels
 {
+    [Export(typeof(GameResourcePaneViewModel))]
     public class GameResourcePaneViewModel
-        : Tool, IHandle<ProjectClosingEventArgs>
+        : Tool, IHandle<ProjectClosingEventArgs>, IHandle<ProjectOpeningEventArgs>
     {
         private DocumentManager documents;
 
-        private RootNodeViewModel resources;
         public RootNodeViewModel Resources 
         {
-            get { return resources; }
-            set { resources = value; NotifyOfPropertyChange(); }
+            get { return (RootNodeViewModel) RootSource[0]; }
+            set 
+            {
+                if (RootSource.Count == 0)
+                    RootSource.Add(value);
+                else RootSource[0] = value; 
+                NotifyOfPropertyChange(); 
+            }
+        }
+
+        private BindableCollection<BaseNodeViewModel> rootSource;
+        /// <summary>
+        /// The root node as a collection. A little hack so the HierarchicalDataTemplate
+        /// can bind to it.
+        /// </summary>
+        public BindableCollection<BaseNodeViewModel> RootSource
+        {
+            get { return rootSource; }
+            private set { rootSource = value; NotifyOfPropertyChange(); }
+        }
+
+        public GameResourcePaneViewModel()
+        {
+            this.DisplayName = "Resources";
+            IoC.Get<IEventAggregator>().Subscribe(this);
+            documents = IoC.Get<DocumentManager>();
+            this.RootSource = new BindableCollection<BaseNodeViewModel>();
         }
 
         public GameResourcePaneViewModel(ProjectManager project)
+            : this()
         {
-            this.DisplayName = "Resources";
             this.Resources = new RootNodeViewModel(project.Project.Resources);
-
-            IoC.Get<IEventAggregator>().Subscribe(this);
-            documents = IoC.Get<DocumentManager>();
         }
 
         public override Gemini.Framework.Services.PaneLocation PreferredLocation
@@ -39,11 +62,15 @@ namespace Lucidity.Modules.GameResources.ViewModels
             get { return Gemini.Framework.Services.PaneLocation.Left; }
         }
 
-        public void Handle(ProjectClosingEventArgs message)
+        public void Handle(ProjectOpeningEventArgs e)
         {
-            this.CloseCommand.Execute(null);
+            this.Resources = new RootNodeViewModel(e.Project.Resources);
         }
 
-
+        public void Handle(ProjectClosingEventArgs e)
+        {
+            //this.CloseCommand.Execute(null);
+            this.Resources = null; //stop closing.
+        }
     }
 }

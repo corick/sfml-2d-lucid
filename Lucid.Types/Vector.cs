@@ -1,5 +1,5 @@
 ﻿
-namespace Lucid.Framework
+namespace Lucid.Types
 {
     public struct Vector
     {

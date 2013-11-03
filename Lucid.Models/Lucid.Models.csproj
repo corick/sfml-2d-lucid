@@ -45,14 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\ComponentModel.cs" />
+    <Compile Include="Entity\SerializedEntityModel.cs" />
+    <Compile Include="VisualizerProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceReference.cs" />
+    <Compile Include="Scene\SceneModel.cs" />
+    <Compile Include="Scene\SceneObject\SceneObjectBase.cs" />
+    <Compile Include="Script\ScriptModel.cs" />
     <Compile Include="Sheet\Animation.cs" />
     <Compile Include="Sheet\Frame.cs" />
     <Compile Include="Sheet\SpriteSheetModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Screen\" />
+    <ProjectReference Include="..\Lucid.Types\Lucid.Types.csproj">
+      <Project>{bdc5349d-5fc0-49b7-bb98-69c48798a669}</Project>
+      <Name>Lucid.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

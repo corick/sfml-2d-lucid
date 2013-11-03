@@ -9,7 +9,7 @@ namespace Lucid.Framework.Graphics
     internal interface IGraphicsContainer
         : IDisplayObject
     {
-        void Add(IDisplayObject o);
-        void Remove(IDisplayObject o);
+        void Add(IDisplayObject displayObject);
+        void Remove(IDisplayObject displayObject);
     }
 }

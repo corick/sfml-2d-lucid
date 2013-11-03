@@ -16,7 +16,19 @@ namespace Lucid.Framework.Entities
         private Dictionary<int, Entity> entities;
         private int currentID;
 
-        //TODO: Indexer for ID.
+        /// <summary>
+        /// Gets an Entity by its ID.
+        /// </summary>
+        /// <param name="id">The ID to grab.</param>
+        /// <returns>The Entity at the given ID.</returns>
+        public Entity this[int id]
+        {
+            get
+            {
+                //FIXME: Null or throw if nonexistent??
+                return entities[id];
+            }
+        }
 
         public EntityManager(Screen owner)
         {
@@ -40,7 +52,7 @@ namespace Lucid.Framework.Entities
         {
             var e = entities[id];
             entities.Remove(e.ID);
-            e.UnloadResources(owner.Resources);
+            e.UnloadResources(owner);
             e.Destroy();
         }
 

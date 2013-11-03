@@ -1,6 +1,7 @@
 ﻿using Lucid.Framework.Renderer;
 using System;
 using System.Drawing;
+using Lucid.Types;
 
 namespace Lucid.Framework.Graphics
 {
@@ -57,9 +58,9 @@ namespace Lucid.Framework.Graphics
             throw new NotImplementedException();
         }
 
-        public void DrawText(string text, object font, Vector position)
+        public void DrawText(string text, object font, Vector position) //FIXME: Color  too!@
         {
-            throw new NotImplementedException();
+            device.DrawText(text, font, position, Color.White);
         }
     }
 }

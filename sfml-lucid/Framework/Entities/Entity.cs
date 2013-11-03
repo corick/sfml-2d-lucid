@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Lucid.Framework.Entities.Components;
 using Lucid.Framework.Resource;
 using Lucid.Framework.Scene;
+using Lucid.Types;
 
 namespace Lucid.Framework.Entities
 {
@@ -68,7 +69,7 @@ namespace Lucid.Framework.Entities
                 c.ReceiveMessage(message);
         }
 
-        private void LoadResources(Screen screen)
+        private void LoadResources(Screen screen) 
         {
             foreach (Component c in Components)
             {
@@ -77,11 +78,19 @@ namespace Lucid.Framework.Entities
             }
         }
 
-        public void UnloadResources(ResourceManager resources)
+        public void UnloadResources(Screen screen)
         {
-            foreach (Component c in Components) c.UnloadResources(resources);
+            foreach (Component c in Components)
+            {
+                c.DisplayRemove(screen.DipslayObjects);
+                c.UnloadResources(screen.Resources);
+            }
         }
 
+        /// <summary>
+        /// Called by the EntityManager after removal. 
+        /// Don't call this manually I think.
+        /// </summary>
         public void Destroy()
         {
             //EM should call UnloadResources(rsc) then Cleanup() when this is
