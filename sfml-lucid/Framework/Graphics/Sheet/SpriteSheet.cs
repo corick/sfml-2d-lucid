@@ -31,10 +31,11 @@ namespace Lucid.Framework.Graphics.Sheet
         public SpriteSheet(Texture tex, string texturePath)
         {
             spriteFrames = new Dictionary<string, Animation>();
-            Animation anim = new Animation(new Size(tex.Info.Width, tex.Info.Height));
+            Animation anim = new Animation();
             spriteFrames.Add(anim.Key, anim);
-
+            this.size = new Size(tex.Info.Width, tex.Info.Height);
             sheetPath = texturePath;
+            SheetTexture = tex;
         }
 
         public SpriteSheet(Texture tex, string texturePath, Size size, List<Animation> animations)

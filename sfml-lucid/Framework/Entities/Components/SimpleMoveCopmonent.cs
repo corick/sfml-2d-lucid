@@ -22,14 +22,16 @@ namespace Lucid.Framework.Entities.Components
 
         }
 
-        int xmod = 5;
+        int xmod = 1;
         private void OnUpdate(object sender, UpdateEventArgs e)
         {
-            if (Parent.LocalPosition.X > 800) xmod = -5;
-            if (Parent.LocalPosition.X < 0) xmod = 5;
+            if (Parent.LocalPosition.X > 800) xmod = -1;
+            if (Parent.LocalPosition.X < 0) xmod = 1;
+
+            Parent.LocalRotation += 4f;
 
             Vector newPos = Parent.LocalPosition;
-            newPos.X += xmod;
+            //newPos.X += xmod;
             Parent.LocalPosition = newPos;
         }
 

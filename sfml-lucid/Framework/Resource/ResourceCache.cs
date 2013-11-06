@@ -45,7 +45,7 @@ namespace Lucid.Framework.Resource
             //The reference count doesn't matter when the thing's done.
             foreach (var x in this.references)
             {
-                (x.Value as IResource).OnUnload(parent);
+                (x.Value as IAutoReference).ReleaseAll(parent);
             }
         }
 

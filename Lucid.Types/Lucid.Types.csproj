@@ -46,7 +46,6 @@
     <Compile Include="BoundingRectangle.cs" />
     <Compile Include="ComponentPropertyAttribute.cs" />
     <Compile Include="DesignerNameAttribute.cs" />
-    <Compile Include="IPositionComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transform.cs" />
     <Compile Include="Vector.cs" />

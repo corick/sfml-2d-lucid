@@ -29,7 +29,7 @@ namespace Lucid.Models.Sheet
             private set;
         }
 
-        public Animation(Size size, string key = "default-static")
+        public Animation(string key = "default-static")
         {
             this.frames = new List<Frame>();
             this.frames.Add(new Frame(0.0f, Point.Empty));

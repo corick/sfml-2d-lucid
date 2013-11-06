@@ -101,6 +101,7 @@
     <Compile Include="Framework\Renderer\SFMLGraphics\SFMLTextureProvider.cs" />
     <Compile Include="Framework\Graphics\GraphicsContainer.cs" />
     <Compile Include="Framework\Resource\AutoReference.cs" />
+    <Compile Include="Framework\Resource\IAutoReference.cs" />
     <Compile Include="Framework\Resource\ImportDefaultFolderAttribute.cs" />
     <Compile Include="Framework\Resource\ImportExtensionAttribute.cs" />
     <Compile Include="Framework\Resource\IResource.cs" />

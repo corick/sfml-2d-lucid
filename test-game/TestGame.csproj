@@ -48,8 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\BBoxDrawComponent.cs" />
     <Compile Include="Entities\TestEntity.cs" />
+    <Compile Include="Entities\TestXform1.cs" />
+    <Compile Include="Entities\TestXform2.cs" />
     <Compile Include="Entities\TextTestComponent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,6 +7,9 @@ namespace Lucid.Framework
     public static class Debug
     {
         private static bool hasAttached = false;
+
+        public static bool Attach = true;
+
         public static void Trace(string msg, params Object[] fmt)
 #if DEBUG
         {

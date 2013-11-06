@@ -23,12 +23,16 @@ namespace Lucid.Types
                 txCache.Reset();
 
                 ///Compound transformations
-                if (parent != null) 
-                    transformMatrix.Multiply(parent.transformMatrix, MatrixOrder.Append);
 
                 txCache.Scale(LocalScale.X, LocalScale.Y, MatrixOrder.Append);
-                txCache.RotateAt((180 / (float)Math.PI) * LocalRotation, new PointF(Origin.X, Origin.Y), MatrixOrder.Append);
+                txCache.RotateAt(LocalRotation, new PointF(-Origin.X, LocalPosition.Y), MatrixOrder.Append);
                 txCache.Translate(LocalPosition.X, LocalPosition.Y, MatrixOrder.Append);
+
+                if (parent != null)
+                {
+                    txCache.Multiply(parent.transformMatrix, MatrixOrder.Append);
+                }
+
                 return txCache;
             }
         }
@@ -91,13 +95,13 @@ namespace Lucid.Types
 
         private float rotationOffset;
         /// <summary>
-        /// Gets or sets the rotation (in radians) about the origin.
+        /// Gets or sets the rotation about the origin.
         /// </summary>
         public float LocalRotation
         {
             get
             {
-                return rotationOffset;
+                return rotationOffset % 360;
             }
             set
             {
@@ -111,7 +115,7 @@ namespace Lucid.Types
             {
                 if (parent == null)
                     return LocalRotation;
-                else return LocalRotation + parent.AbsoluteRotation;
+                else return (LocalRotation + parent.AbsoluteRotation) % 360;
             }
         }
 
@@ -134,7 +138,7 @@ namespace Lucid.Types
         public Transform()
         {
             positionOffset = Vector.Zero;
-            scaleOffset = Vector.Zero;
+            scaleOffset = new Vector(1, 1);
             rotationOffset = 0f;
             parent = null;
         }
@@ -172,11 +176,12 @@ namespace Lucid.Types
             //Do translation, rotation around origin, scaling in the right order (e.g. not necessarily this one).
             //TODO: Matrix cache
 
-            PointF pt = new PointF(point.X, point.Y);
+            //PointF pt = new PointF(point.X, point.Y);
+            PointF pt = new PointF( LocalPosition.X - point.X, LocalPosition.Y - point.Y);
             ptCache[0] = pt;
             transformMatrix.TransformPoints(ptCache);
-            point.X = pt.X;
-            point.Y = pt.Y;
+            point.X = ptCache[0].X;
+            point.Y = ptCache[0].Y;
 
             return point;
         }
@@ -188,8 +193,8 @@ namespace Lucid.Types
             var inv = transformMatrix;
             inv.Invert();
             inv.TransformPoints(ptCache);
-            point.X = pt.X;
-            point.Y = pt.Y;
+            point.X = ptCache[0].X;
+            point.Y = ptCache[0].Y;
 
             return point;
         }

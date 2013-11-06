@@ -11,6 +11,7 @@ namespace Lucid.Framework.Resource
     /// </summary>
     /// <typeparam name="T"></typeparam>
     internal class AutoReference<T> 
+        : IAutoReference
         where T : IResource
     {
         private int refCount;
@@ -40,12 +41,18 @@ namespace Lucid.Framework.Resource
         {
             refCount -= 1;
 
-            if (refCount >= 0)
+            if (refCount <= 0)
             {
                 Debug.Trace("0 refs for {0}, unloading.", this);
                 reference.OnUnload(rsc);
                 reference = default(T);
             }
+        }
+
+        public void ReleaseAll(ResourceManager rsc)
+        {
+            refCount = 0;
+            Release(rsc);
         }
     }
 }

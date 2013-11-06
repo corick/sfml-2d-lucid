@@ -57,7 +57,7 @@ namespace Lucid.Framework.Graphics
             Visible = true;
             this.depth = depth;
 
-            spriteSheet = new SpriteSheet(texture, texturePath);
+            this.spriteSheet = new SpriteSheet(texture, texturePath);
             animator = spriteSheet.CreateAnimator();
             this.Bounds = bounds;
         }
@@ -83,13 +83,16 @@ namespace Lucid.Framework.Graphics
                 Bounds.Width = animator.SubRectangle.Width;
                 Bounds.Height = animator.SubRectangle.Height;
             }
+
+            //TODO: Set Origin
         }
 
         public void Draw(Graphics2D gfx)
         {
-            //FIXME: Color, etc render property stuff.
-            gfx.DrawTexture(spriteSheet.SheetTexture, Bounds.Transform.WorldPosition, new Size((int)Bounds.Width, (int)Bounds.Height), 
-                            animator.SubRectangle, Camera, Color.White);
+            //gfx.DrawTexture(spriteSheet.SheetTexture, Bounds.Transform.WorldPosition, new Size((int)Bounds.Width, (int)Bounds.Height), 
+            //                animator.SubRectangle, Camera, Color.White);
+
+            gfx.DrawTexture(spriteSheet.SheetTexture, Bounds.Transform, animator.SubRectangle, Camera, Color.White); 
 
             //FIXME: We just want to see if this works...
             animator.Update(0.33f);

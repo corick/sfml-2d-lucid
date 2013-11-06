@@ -45,7 +45,7 @@ namespace Lucid.Framework.Entities
             private set;
         }
 
-        public Entity(EntityManager manager, Entity parent = null)
+        public Entity(EntityManager manager, Transform parent = null)
             : base(parent)
         {
             Manager = manager;

@@ -40,6 +40,7 @@ namespace Lucid.Framework.Graphics.Sheet
         public void Update(float dt)
         {
             //FIXME: This is probably hella bugs.
+            if (current.GetFrame(currentIndex).Time == 0) return;
             elapsed += dt;
             while (elapsed > current.GetFrame(currentIndex).Time) //Scoot forward a few frames.
             {

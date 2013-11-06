@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lucid.Framework;
 using Lucid.Framework.Entities;
 using Lucid.Framework.Entities.Components;
 using Lucid.Framework.Graphics;
@@ -32,6 +33,12 @@ namespace TestGame.Entities
 
         public override void Initialize(Lucid.Framework.Scene.Screen screen)
         {
+            screen.Services.Get<UpdateNotifier>().Update += TextTestComponent_Update;
         }
+
+        void TextTestComponent_Update(object sender, UpdateEventArgs e)
+        {
+        }
+
     }
 }
