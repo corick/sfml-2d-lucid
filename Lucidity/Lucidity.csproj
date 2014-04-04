@@ -38,9 +38,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\net45\Caliburn.Micro.dll</HintPath>
     </Reference>
+    <Reference Include="Gemini">
+      <HintPath>..\packages\GeminiWpf.0.4.0\lib\net40\Gemini.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -158,10 +161,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\gemini-master\src\Gemini\Gemini.csproj">
-      <Project>{13dbfc87-c152-4a86-94b0-d9944beef647}</Project>
-      <Name>Gemini</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Lucid.Models\Lucid.Models.csproj">
       <Project>{206aac81-e78e-49f5-baf9-650f2e521fe1}</Project>
       <Name>Lucid.Models</Name>

@@ -9,6 +9,10 @@ using Lucid.Models.Sheet;
 
 namespace Lucid.Framework.Resource.Texture
 {
+    /// <summary>
+    /// Reader for our really dumb binary sprite sheet definition file.
+    /// TODO: Newtonsoft.Json it up.
+    /// </summary>
     public class SpriteSheetReader
         : IResourceReader
     {
